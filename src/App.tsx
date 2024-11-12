@@ -104,24 +104,27 @@ function App() {
 		dataInitializer()
 	}, [])
 	return (<>
-		<span className="text-2xl">hello world</span>
-		<form className='flex flex-col border-[1px] border-gray-300' onSubmit={addAccount}>
-			<input placeholder="website name" required />
-			<input placeholder="account name" required />
-			<input placeholder="2FA secret" required />
-			<button type="submit">add account</button>
-		</form>
-
-		<div>
-			<button onClick={refreshList}>refresh list</button>
-			<ul>
+		<section className='lg:w-2/3 lg:mx-auto'>
+			{/* <form className='flex flex-col border-[1px] border-gray-300' onSubmit={addAccount}>
+				<input placeholder="website name" required />
+				<input placeholder="account name" required />
+				<input placeholder="2FA secret" required />
+				<button type="submit">add account</button>
+			</form> */}
+			<div className='flex gap-2'>
+				<div className='w-full my-4 shadow-md bg-white border-[1px] rounded-full px-4 py-2'>
+					<input placeholder='Search my account...' className='outline-none w-full' />
+				</div>
+				<button>Add</button>
+			</div>
+			<div className='lg:columns-3 columns-1'>
 				{accounts.map((account) => (
-					<li key={account.id}>
+					<div key={account.id} className='break-inside-avoid'>
 						<AccountCard account={account} />
-					</li>
+					</div>
 				))}
-			</ul>
-		</div>
+			</div>
+		</section>
 	</>)
 }
 
