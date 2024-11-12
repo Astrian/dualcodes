@@ -17,6 +17,11 @@ function App() {
 		if (tfaAccountsLS) tfaAccounts = JSON.parse(tfaAccountsLS)
 		else localStorage.setItem('tfa_accounts', JSON.stringify(tfaAccounts))
 
+		let tagsLS = localStorage.getItem('tfa_tags')
+		let tags = [] as Tag[]
+		if (tagsLS) tags = JSON.parse(tagsLS)
+		else localStorage.setItem('tfa_tags', JSON.stringify(tags))
+
 		setAccounts(tfaAccounts)
 	}
 
