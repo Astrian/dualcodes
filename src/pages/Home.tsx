@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react'
 import AccountCard from '../components/AccountCard'
 import AddAccountDialog from '../components/AddAccountDialog'
+import Icon from '@mdi/react'
+import { mdiDotsVertical } from '@mdi/js'
 
 function App() {
 	const [accounts, setAccounts] = useState([] as Account[])
 	const [presentAddAccountDialog, setPresentAddAccountDialog] = useState(false)
+	const [presentMenu, setPresentMenu] = useState(false)
 	let initing = false
 
 	async function dataInitializer() {
@@ -81,23 +84,29 @@ function App() {
 		dataInitializer()
 	}, [])
 	return (<>
-		<section className='w-full min-h-screen bg-slate-200'>
-			<div className='mx-3 lg:w-2/3 lg:mx-auto select-none'>
-				<div className='flex gap-2'>
-					<div className='w-full my-4 shadow-md bg-white border-[1px] rounded-full px-4 py-2'>
-						<input placeholder='Search my account...' className='outline-none w-full' />
-					</div>
-					<button onClick={() => setPresentAddAccountDialog(true)}>Add</button>
+		<section className='mx-3 lg:w-2/3 lg:mx-auto'>
+			<div className='flex gap-2'>
+				<div className='w-full my-4 shadow-md bg-white border-[1px] rounded-full px-4 py-2'>
+					<input placeholder='Search my account...' className='outline-none w-full' />
 				</div>
-				<div className='lg:columns-4 lg:gap-2 columns-1'>
-					{accounts.map((account) => (
-						<div key={account.id} className='break-inside-avoid mb-2'>
-							<AccountCard account={account} />
-						</div>
-					))}
+				<div className='flex items-center justify-end'>
+					<button onClick={() => setPresentMenu(!presentMenu)}><Icon path={mdiDotsVertical} size={1} /></button>
+					{ presentMenu && <div className='absolute top-16 z-10 bg-white shadow-lg rounded-md border-[1px] border-gray-200 min-w-40 py-2'>
+						<ul>
+							<li className='px-4 py-2 hover:bg-slate-100 cursor-pointer' onClick={() => {setPresentMenu(false); setPresentAddAccountDialog(true)}}>Add an account</li>
+							<li className='px-4 py-2 hover:bg-slate-100 cursor-pointer'>Preferences</li>
+						</ul>
+					</div> }
 				</div>
-				<div className='mt-4 text-center text-xl text-gray-500'>{accounts.length} accounts</div>
 			</div>
+			<div className='lg:columns-4 lg:gap-2 columns-1'>
+				{accounts.map((account) => (
+					<div key={account.id} className='break-inside-avoid mb-2'>
+						<AccountCard account={account} />
+					</div>
+				))}
+			</div>
+			<div className='mt-4 text-center text-xl text-gray-500'>{accounts.length} accounts</div>
 		</section>
 
 		{presentAddAccountDialog && <AddAccountDialog dismiss={() => {setPresentAddAccountDialog(false)}} refreshList={refreshList} />}
