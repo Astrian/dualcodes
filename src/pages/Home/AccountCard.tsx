@@ -28,12 +28,13 @@ function AccountCard(props: { account: Account }) {
 	}
 
 	return (<>
-		<div className='border-[1px] border-gray-100 shadow-md rounded-md p-2 cursor-pointer select-none bg-white' onClick={copyOTP}>
-			<div className='flex justify-between '>
-				<div className='text-2xl'>{props.account.website}</div>
-				<div className='text-2xl text-gray-400'>{props.account.name}</div>
+		<div className='border-[1px] border-gray-100 shadow-md rounded-md p-2 cursor-pointer select-none bg-white flex flex-row-reverse justify-between items-center lg:flex-col lg:items-start' onClick={copyOTP}>
+		<div className='text-4xl'>{otp}</div>
+			<div className='flex flex-col'>
+				<div className='text-xl text-ellipsis'>{props.account.website}</div>
+				<div className='text-gray-400 text-sm text-ellipsis'>{props.account.name}</div>
 			</div>
-			<div className='text-4xl'>{otp}</div>
+			
 		</div>
 	</>)
 }
