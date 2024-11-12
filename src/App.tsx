@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import {v4 as uuidv4} from 'uuid'
+import AccountCard from './components/AccountCard'
 
 function App() {
 	const [accounts, setAccounts] = useState([] as Account[])
@@ -116,9 +117,7 @@ function App() {
 			<ul>
 				{accounts.map((account) => (
 					<li key={account.id}>
-						<span>{account.name}</span>
-						<span>{account.website}</span>
-						<span>{account.secret}</span>
+						<AccountCard account={account} />
 					</li>
 				))}
 			</ul>
