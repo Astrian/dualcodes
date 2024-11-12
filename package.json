@@ -12,11 +12,13 @@
   "dependencies": {
     "@mdi/js": "^7.4.47",
     "@mdi/react": "^1.6.1",
+    "@yudiel/react-qr-scanner": "^2.0.8",
     "axios": "^1.7.7",
     "cron": "^3.2.0",
     "otpauth": "^9.3.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-qr-code": "^2.0.15",
     "react-router-dom": "^6.28.0",
     "react-switch": "^7.0.0",
     "uuid": "^11.0.3"

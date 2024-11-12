@@ -4,6 +4,7 @@ import AddAccountDialog from './AddAccountDialog'
 import Icon from '@mdi/react'
 import { mdiDotsVertical } from '@mdi/js'
 import { Link } from 'react-router-dom'
+import NoAccount from './NoAccount'
 import axios from 'axios'
 
 function App() {
@@ -94,14 +95,18 @@ function App() {
 					</div> }
 				</div>
 			</div>
-			<div className='lg:columns-4 lg:gap-2 columns-1'>
-				{accounts.map((account) => (
-					<div key={account.id} className='break-inside-avoid mb-2'>
-						<AccountCard account={account} />
-					</div>
-				))}
-			</div>
-			<div className='mt-4 text-center text-xl text-gray-500'>{accounts.length} accounts</div>
+			{ accounts.length > 0 ?<>
+				<div className='lg:columns-4 lg:gap-2 columns-1'>
+					{accounts.map((account) => (
+						<div key={account.id} className='break-inside-avoid mb-2'>
+							<AccountCard account={account} />
+						</div>
+					))}
+					
+				</div> 
+				<div className='mt-4 text-center text-xl text-gray-500'>{accounts.length} accounts</div>
+			</>: <NoAccount addAccount={() => setPresentAddAccountDialog(true)} refreshList={reloadData} /> }
+			
 		</section>
 
 		{presentAddAccountDialog && <AddAccountDialog dismiss={() => {setPresentAddAccountDialog(false)}} refreshList={loadFromLocalStorage} />}

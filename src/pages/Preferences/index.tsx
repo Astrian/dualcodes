@@ -1,10 +1,12 @@
 import Switch from "react-switch"
 import { useState, useEffect } from "react"
 import InitialSyncingDialog from "./InitialSyncingDialog"
+import ConnectQRCodeDialog from "./ConnectQRCodeDialog"
 
 function Preferences() {
 	const [syncing, setSyncing] = useState(false)
 	const [presentInitialSyncingDialog, setPresentInitialSyncingDialog] = useState(false)
+	const [presentQRCodeDialog, setPresentQRCodeDialog] = useState(false)
 
 	function toggleSyncing() {
 		if (syncing) {
@@ -38,7 +40,7 @@ function Preferences() {
 						<div className="flex justify-between p-4">
 							<div>Connect a new device</div>
 							<div className="flex gap-2">
-								<button className="bg-sky-500 px-2 py-1 rounded-md border-[1px] border-sky-600 text-white">Present connect QR code</button>
+								<button className="bg-sky-500 px-2 py-1 rounded-md border-[1px] border-sky-600 text-white" onClick={() => setPresentQRCodeDialog(true)}>Present connect QR code</button>
 								<button className="bg-slate-100 px-2 py-1 rounded-md border-[1px] border-slate-200">Mannually set</button>
 							</div>
 						</div>
@@ -55,6 +57,8 @@ function Preferences() {
 		</section>
 
 		{presentInitialSyncingDialog && <InitialSyncingDialog dismiss={() => {setPresentInitialSyncingDialog(false)}} launchSyncing={launchSyncing} />}
+
+		{presentQRCodeDialog && <ConnectQRCodeDialog dismiss={() => {setPresentQRCodeDialog(false)}} />}
 	</>)
 }
 export default Preferences
