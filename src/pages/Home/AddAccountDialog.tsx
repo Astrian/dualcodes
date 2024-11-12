@@ -1,6 +1,7 @@
 import { v4 as uuidv4 } from 'uuid'
 import Icon from '@mdi/react'
 import { mdiClose } from '@mdi/js'
+import axios from 'axios'
 
 function AddAccountDialog(props: {
 	dismiss: () => void,
@@ -25,6 +26,52 @@ function AddAccountDialog(props: {
 		})
 
 		localStorage.setItem('tfa_accounts', JSON.stringify(tfaAccounts))
+
+		const syncConfigLS = localStorage.getItem('tfa_sync')
+		if (syncConfigLS) {
+			const syncConfig = JSON.parse(syncConfigLS) as { password: string, id: string, key: {
+				alg: string,
+				ext: boolean,
+				k: string,
+				key_ops: string[],
+				kty: string
+			} }
+
+			const iv = crypto.getRandomValues(new Uint8Array(12))
+			const key = await crypto.subtle.importKey(
+				"jwk",
+				syncConfig.key,
+				{
+					name: "AES-GCM"
+				},
+				false,
+				["encrypt", "decrypt"]
+			)
+			const encrypted = await crypto.subtle.encrypt(
+				{
+					name: "AES-GCM",
+					iv: iv
+				},
+				key,
+				new TextEncoder().encode(JSON.stringify({ accounts: tfaAccounts, tags: [] }))
+			)
+			const ivBase64 = btoa(String.fromCharCode(...iv))
+			const encryptedBase64 = btoa(String.fromCharCode(...new Uint8Array(encrypted)))
+
+			try {
+				let response = await axios.post('/api/dualcodes/save', {
+					callPwd: syncConfig.password,
+					id: syncConfig.id,
+					data: JSON.stringify({
+						iv: ivBase64,
+						data: encryptedBase64
+					})
+				})
+				console.log(response.data)
+			} catch (e) {
+				console.error(e)
+			}
+		}
 
 		props.refreshList()
 		props.dismiss()

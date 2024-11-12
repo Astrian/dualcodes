@@ -104,7 +104,7 @@ function App() {
 			<div className='mt-4 text-center text-xl text-gray-500'>{accounts.length} accounts</div>
 		</section>
 
-		{presentAddAccountDialog && <AddAccountDialog dismiss={() => {setPresentAddAccountDialog(false)}} refreshList={reloadData} />}
+		{presentAddAccountDialog && <AddAccountDialog dismiss={() => {setPresentAddAccountDialog(false)}} refreshList={loadFromLocalStorage} />}
 	</>)
 }
 
