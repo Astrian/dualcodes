@@ -1,6 +1,8 @@
 import * as OTPAuth from 'otpauth'
 import { useState, useEffect } from 'react'
 import { CronJob } from 'cron'
+import Icon from '@mdi/react'
+import { mdiDotsVertical } from '@mdi/js'
 
 function AccountCard(props: { account: Account }) {
 	const [otp, setOtp] = useState('******')
@@ -28,13 +30,20 @@ function AccountCard(props: { account: Account }) {
 	}
 
 	return (<>
-		<div className='border-[1px] border-gray-100 shadow-md rounded-md p-2 cursor-pointer select-none bg-white flex flex-row-reverse justify-between items-center lg:flex-col lg:items-start' onClick={copyOTP}>
-		<div className='text-4xl'>{otp}</div>
-			<div className='flex flex-col'>
-				<div className='text-xl text-ellipsis'>{props.account.website}</div>
-				<div className='text-gray-400 text-sm text-ellipsis'>{props.account.name}</div>
+		<div className='border-[1px] border-gray-100 shadow-md rounded-md p-2 select-none bg-white flex items-center lg:items-start'>
+			<div className='flex flex-row-reverse justify-between items-center lg:flex-col lg:items-start flex-1'>
+				<div className='text-4xl cursor-pointer' onClick={copyOTP}>{otp}</div>
+				<div className='flex flex-col w-36 lg:w-full'>
+					<div className='text-xl text-ellipsis truncate'>{props.account.website}</div>
+					<div className='text-gray-400 text-sm text-ellipsis w-full truncate'>{props.account.name}</div>
+				</div>
+				
 			</div>
-			
+			<div>
+				<button className='min-w-6'>
+					<Icon path={mdiDotsVertical} size={1} />
+				</button>
+			</div>
 		</div>
 	</>)
 }
