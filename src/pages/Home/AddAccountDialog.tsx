@@ -1,4 +1,6 @@
 import { v4 as uuidv4 } from 'uuid'
+import Icon from '@mdi/react'
+import { mdiClose } from '@mdi/js'
 
 function AddAccountDialog(props: {
 	dismiss: () => void,
@@ -10,24 +12,22 @@ function AddAccountDialog(props: {
 		const websiteName = (target.elements[0] as HTMLInputElement).value
 		const accountName = (target.elements[1] as HTMLInputElement).value
 		const account2FASecret = (target.elements[2] as HTMLInputElement).value.replace(/\s/g,'')
-		console.log(websiteName, accountName, account2FASecret)
-		let request = window.indexedDB.open('dualcodes', 1)
-		request.onsuccess = function() {
-			let db = request.result
-			let transaction = db.transaction(['ACCOUNT'], 'readwrite')
-			let objectStore = transaction.objectStore('ACCOUNT')
-			let addingRequest = objectStore.add({
-				ACCOUNT_ID: uuidv4(),
-				ACCOUNT_NAME: accountName,
-				ACCOUNT_WEBSITE: websiteName,
-				ACCOUNT_2FASECRET: account2FASecret
-			})
-			addingRequest.onsuccess = function() {
-				console.log('account added')
-				props.refreshList()
-				props.dismiss()
-			}
-		}
+		
+		let tfaAccountsLS = localStorage.getItem('tfa_accounts')
+		let tfaAccounts = [] as Account[]
+		if (tfaAccountsLS) tfaAccounts = JSON.parse(tfaAccountsLS)
+		
+		tfaAccounts.push({
+			id: uuidv4(),
+			website: websiteName,
+			name: accountName,
+			secret: account2FASecret
+		})
+
+		localStorage.setItem('tfa_accounts', JSON.stringify(tfaAccounts))
+
+		props.refreshList()
+		props.dismiss()
 	}
 
 	return (<>
@@ -36,7 +36,7 @@ function AddAccountDialog(props: {
 				<div className='w-full border-[1px] border-gray-300 rounded-md'>
 					<div className='bg-slate-300 rounded-t-md p-2 flex justify-between'>
 						<div className='font-bold text-xl'>Add new 2FA account</div>
-						<button onClick={props.dismiss}>X</button>
+						<button onClick={props.dismiss}><Icon path={mdiClose} size={1} /></button>
 					</div>
 					<div className='bg-white p-2 rounded-b-md'>
 						<form className='flex flex-col' onSubmit={addAccount}>
