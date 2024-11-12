@@ -1,11 +1,15 @@
 import { useEffect, useState } from 'react'
-import {v4 as uuidv4} from 'uuid'
 import AccountCard from './components/AccountCard'
+import AddAccountDialog from './components/AddAccountDialog'
 
 function App() {
 	const [accounts, setAccounts] = useState([] as Account[])
+	const [presentAddAccountDialog, setPresentAddAccountDialog] = useState(false)
+	let initing = false
 
 	async function dataInitializer() {
+		if (initing) return
+		initing = true
 		// detect if the IndexedDB is created
 		let request = window.indexedDB.open('dualcodes', 1)
 		request.onerror = function(event) {
@@ -41,30 +45,6 @@ function App() {
 		refreshList()
 	}
 
-	async function addAccount(event: React.FormEvent) {
-		event.preventDefault()
-		const target = event.currentTarget as HTMLFormElement
-		const websiteName = (target.elements[0] as HTMLInputElement).value
-		const accountName = (target.elements[1] as HTMLInputElement).value
-		const account2FASecret = (target.elements[2] as HTMLInputElement).value.replace(/\s/g,'')
-		console.log(websiteName, accountName, account2FASecret)
-		let request = window.indexedDB.open('dualcodes', 1)
-		request.onsuccess = function() {
-			let db = request.result
-			let transaction = db.transaction(['ACCOUNT'], 'readwrite')
-			let objectStore = transaction.objectStore('ACCOUNT')
-			let addingRequest = objectStore.add({
-				ACCOUNT_ID: uuidv4(),
-				ACCOUNT_NAME: accountName,
-				ACCOUNT_WEBSITE: websiteName,
-				ACCOUNT_2FASECRET: account2FASecret
-			})
-			addingRequest.onsuccess = function() {
-				console.log('account added')
-			}
-		}
-	}
-
 	async function refreshList() {
 		console.log('refreshing list')
 		setAccounts([])
@@ -79,20 +59,17 @@ function App() {
 			cursor.onerror = function() {
 				console.log('error')
 			}
-			let resultList = [] as Account[]
 			cursor.onsuccess = function() {
 				let result = cursor.result
 				if (result) {
-					resultList.push({
+					setAccounts(accounts => [...accounts, {
 						id: result.value.ACCOUNT_ID,
 						name: result.value.ACCOUNT_NAME,
 						website: result.value.ACCOUNT_WEBSITE,
 						secret: result.value.ACCOUNT_2FASECRET
-					})
+					}])
 					result.continue()
 				}
-				console.log(resultList)
-				setAccounts(resultList)
 			}
 		}
 		request.onblocked = function() {
@@ -105,17 +82,11 @@ function App() {
 	}, [])
 	return (<>
 		<section className='lg:w-2/3 lg:mx-auto'>
-			{/* <form className='flex flex-col border-[1px] border-gray-300' onSubmit={addAccount}>
-				<input placeholder="website name" required />
-				<input placeholder="account name" required />
-				<input placeholder="2FA secret" required />
-				<button type="submit">add account</button>
-			</form> */}
 			<div className='flex gap-2'>
 				<div className='w-full my-4 shadow-md bg-white border-[1px] rounded-full px-4 py-2'>
 					<input placeholder='Search my account...' className='outline-none w-full' />
 				</div>
-				<button>Add</button>
+				<button onClick={() => setPresentAddAccountDialog(true)}>Add</button>
 			</div>
 			<div className='lg:columns-3 columns-1'>
 				{accounts.map((account) => (
@@ -125,6 +96,8 @@ function App() {
 				))}
 			</div>
 		</section>
+
+		{presentAddAccountDialog && <AddAccountDialog dismiss={() => {setPresentAddAccountDialog(false)}} refreshList={refreshList} />}
 	</>)
 }
 
