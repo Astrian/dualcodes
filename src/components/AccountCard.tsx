@@ -28,7 +28,7 @@ function AccountCard(props: { account: Account }) {
 	}
 
 	return (<>
-		<div className='border-[1px] border-gray-100 shadow-md rounded-md p-2 cursor-pointer select-none' onClick={copyOTP}>
+		<div className='border-[1px] border-gray-100 shadow-md rounded-md p-2 cursor-pointer select-none bg-white' onClick={copyOTP}>
 			<div className='flex justify-between '>
 				<div className='text-2xl'>{props.account.website}</div>
 				<div className='text-2xl text-gray-400'>{props.account.name}</div>

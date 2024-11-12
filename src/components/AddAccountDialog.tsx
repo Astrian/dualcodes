@@ -32,7 +32,7 @@ function AddAccountDialog(props: {
 
 	return (<>
 		<div className='z-10 fixed top-0 left-0 w-full h-full bg-black/40'>
-			<div className='lg:w-2/4 lg:mx-auto h-full flex justify-center items-center'>
+			<div className='mx-3 lg:w-2/4 lg:mx-auto h-full flex justify-center items-center'>
 				<div className='w-full border-[1px] border-gray-300 rounded-md'>
 					<div className='bg-slate-300 rounded-t-md p-2 flex justify-between'>
 						<div className='font-bold text-xl'>Add new 2FA account</div>
