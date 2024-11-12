@@ -81,20 +81,21 @@ function App() {
 		dataInitializer()
 	}, [])
 	return (<>
-		<section className='lg:w-2/3 lg:mx-auto'>
+		<section className='lg:w-2/3 lg:mx-auto select-none'>
 			<div className='flex gap-2'>
 				<div className='w-full my-4 shadow-md bg-white border-[1px] rounded-full px-4 py-2'>
 					<input placeholder='Search my account...' className='outline-none w-full' />
 				</div>
 				<button onClick={() => setPresentAddAccountDialog(true)}>Add</button>
 			</div>
-			<div className='lg:columns-3 columns-1'>
+			<div className='lg:columns-4 lg:gap-2 columns-1'>
 				{accounts.map((account) => (
 					<div key={account.id} className='break-inside-avoid'>
 						<AccountCard account={account} />
 					</div>
 				))}
 			</div>
+			<div className='mt-4 text-center text-xl text-gray-300'>{accounts.length} accounts</div>
 		</section>
 
 		{presentAddAccountDialog && <AddAccountDialog dismiss={() => {setPresentAddAccountDialog(false)}} refreshList={refreshList} />}
