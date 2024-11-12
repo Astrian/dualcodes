@@ -1,9 +1,10 @@
 import { v4 as uuidv4 } from 'uuid'
 import Icon from '@mdi/react'
-import { mdiClose } from '@mdi/js'
+import { mdiClose, mdiQrcodeScan } from '@mdi/js'
 import axios from 'axios'
 import { useState } from 'react'
 import { Scanner } from '@yudiel/react-qr-scanner'
+
 
 function AddAccountDialog(props: {
 	dismiss: () => void,
@@ -136,19 +137,19 @@ function AddAccountDialog(props: {
 
 						{ mode === 1 && <form className='flex flex-col' onSubmit={addAccountMannual}>
 							<div className='flex border-b-[1px] border-gray-200 py-2'>
-								<div className='font-bold'>Website name</div>
+								<div className='font-bold'>Website</div>
 								<input placeholder="Awsome website" className='outline-none text-right flex-1' required />
 							</div>
 							<div className='flex border-b-[1px] border-gray-200 py-2'>
-								<div className='font-bold'>Account name</div>
+								<div className='font-bold'>Account</div>
 								<input placeholder="John Appleseed" className='outline-none text-right flex-1' required />
 							</div>
 							<div className='flex border-b-[1px] border-gray-200 py-2'>
 								<div className='font-bold'>2FA secret</div>
 								<input placeholder="ABCD 1234 ..." className='outline-none text-right flex-1' required />
 							</div>
-							<div className='flex py-2'>
-								<div className='flex-1' />
+							<div className='flex py-2 justify-between'>
+								<button onClick={() => setMode(0)} className='bg-slate-200 px-4 py-2 rounded-md border-[1px] border-slate-300 active:shadow-inner active:bg-slate-600'><Icon path={mdiQrcodeScan} size={1} /></button>
 								<button type="submit" className='bg-sky-500 text-white px-4 py-2 rounded-md border-[1px] border-sky-600 active:shadow-inner active:bg-sky-600'>Add account</button>
 							</div>
 						</form> }
