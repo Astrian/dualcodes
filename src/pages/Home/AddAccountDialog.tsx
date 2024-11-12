@@ -2,28 +2,69 @@ import { v4 as uuidv4 } from 'uuid'
 import Icon from '@mdi/react'
 import { mdiClose } from '@mdi/js'
 import axios from 'axios'
+import { useState } from 'react'
+import { Scanner } from '@yudiel/react-qr-scanner'
 
 function AddAccountDialog(props: {
 	dismiss: () => void,
 	refreshList: () => void
 }) {
-	async function addAccount(event: React.FormEvent) {
+	const [mode, setMode] = useState(0)
+
+	async function qrCodeEvent(result: {rawValue: string}[]) {
+		// parse the QR code result
+		console.log(result[0].rawValue)
+
+		// beginning with otpauth://totp/
+		if (!result[0].rawValue.startsWith('otpauth://totp/')) return
+
+		// extract the parameters
+		const paramsArray = result[0].rawValue.split('?')[1].split('&')
+		const params: { secret: string, issuer?: string, account?: string } = {secret: ''}
+		paramsArray.forEach(p => {
+			const [key, value] = p.split('=')
+			if (key === 'secret') params.secret = value
+			if (key === 'issuer') params.issuer = decodeURIComponent(value)
+			if (key === 'account') params.account = decodeURIComponent(value)
+		})
+		if (!params.issuer) {
+			const issuer = result[0].rawValue.split('?')[0].split('otpauth://totp/')[1].split(':')[0]
+			params.issuer = decodeURIComponent(issuer)
+		}
+		if (!params.account) {
+			const account = result[0].rawValue.split('?')[0].split('otpauth://totp/')[1].split(':')[1]
+			params.account = decodeURIComponent(account)
+		}
+		
+		addAccount({
+			id: uuidv4(),
+			website: params.issuer,
+			name: params.account,
+			secret: params.secret
+		})
+	}
+
+	async function addAccountMannual(event: React.FormEvent) {
 		event.preventDefault()
 		const target = event.currentTarget as HTMLFormElement
 		const websiteName = (target.elements[0] as HTMLInputElement).value
 		const accountName = (target.elements[1] as HTMLInputElement).value
 		const account2FASecret = (target.elements[2] as HTMLInputElement).value.replace(/\s/g,'')
 		
-		let tfaAccountsLS = localStorage.getItem('tfa_accounts')
-		let tfaAccounts = [] as Account[]
-		if (tfaAccountsLS) tfaAccounts = JSON.parse(tfaAccountsLS)
-		
-		tfaAccounts.push({
+		addAccount({
 			id: uuidv4(),
 			website: websiteName,
 			name: accountName,
 			secret: account2FASecret
 		})
+	}
+
+	async function addAccount(account: Account) {
+		let tfaAccountsLS = localStorage.getItem('tfa_accounts')
+		let tfaAccounts = [] as Account[]
+		if (tfaAccountsLS) tfaAccounts = JSON.parse(tfaAccountsLS)
+		
+		tfaAccounts.push(account)
 
 		localStorage.setItem('tfa_accounts', JSON.stringify(tfaAccounts))
 
@@ -86,7 +127,14 @@ function AddAccountDialog(props: {
 						<button onClick={props.dismiss}><Icon path={mdiClose} size={1} /></button>
 					</div>
 					<div className='bg-white p-2 rounded-b-md'>
-						<form className='flex flex-col' onSubmit={addAccount}>
+						{ mode === 0 && <div className='flex flex-col gap-4 items-center'>
+							<Scanner onScan={result => qrCodeEvent(result)} />
+							<div>
+								<button onClick={() => setMode(1)} className='bg-sky-500 text-white px-4 py-2 rounded-md border-[1px] border-sky-600 active:shadow-inner active:bg-sky-600'>Enter manually</button>
+							</div>
+						</div>}
+
+						{ mode === 1 && <form className='flex flex-col' onSubmit={addAccountMannual}>
 							<div className='flex border-b-[1px] border-gray-200 py-2'>
 								<div className='font-bold'>Website name</div>
 								<input placeholder="Awsome website" className='outline-none text-right flex-1' required />
@@ -103,7 +151,7 @@ function AddAccountDialog(props: {
 								<div className='flex-1' />
 								<button type="submit" className='bg-sky-500 text-white px-4 py-2 rounded-md border-[1px] border-sky-600 active:shadow-inner active:bg-sky-600'>Add account</button>
 							</div>
-						</form>
+						</form> }
 					</div>
 				</div>
 			</div>
