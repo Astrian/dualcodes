@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
-import AccountCard from '../components/AccountCard'
-import AddAccountDialog from '../components/AddAccountDialog'
+import AccountCard from './AccountCard'
+import AddAccountDialog from './AddAccountDialog'
 import Icon from '@mdi/react'
 import { mdiDotsVertical } from '@mdi/js'
+import { Link } from 'react-router-dom'
 
 function App() {
 	const [accounts, setAccounts] = useState([] as Account[])
@@ -94,7 +95,7 @@ function App() {
 					{ presentMenu && <div className='absolute top-16 z-10 bg-white shadow-lg rounded-md border-[1px] border-gray-200 min-w-40 py-2'>
 						<ul>
 							<li className='px-4 py-2 hover:bg-slate-100 cursor-pointer' onClick={() => {setPresentMenu(false); setPresentAddAccountDialog(true)}}>Add an account</li>
-							<li className='px-4 py-2 hover:bg-slate-100 cursor-pointer'>Preferences</li>
+							<Link to="/preferences"><li className='px-4 py-2 hover:bg-slate-100 cursor-pointer'>Preferences</li></Link>
 						</ul>
 					</div> }
 				</div>
