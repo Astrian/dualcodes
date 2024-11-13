@@ -5,6 +5,18 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Home from './pages/Home/index.tsx'
 import Preferences from './pages/Preferences/index.tsx'
 import AccountDetail from './pages/AccountDetail/index.tsx'
+import i18n from "i18next"
+import { initReactI18next } from "react-i18next"
+import resources from "./i18n"
+import LanguageDetector from 'i18next-browser-languagedetector'
+
+i18n.use(initReactI18next).use(LanguageDetector).init({
+	resources,
+  fallbackLng: "en",
+	interpolation: {
+		escapeValue: false
+	}
+})
 
 const router = createBrowserRouter([
   {
@@ -23,6 +35,6 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <RouterProvider router={router}/>
   </StrictMode>,
 )

@@ -6,11 +6,14 @@ import { mdiDotsVertical } from '@mdi/js'
 import { Link } from 'react-router-dom'
 import NoAccount from './NoAccount'
 import loadFromServer from '../../utils/loadFromServer'
+import { useTranslation } from 'react-i18next'
 
 function App() {
 	const [accounts, setAccounts] = useState([] as Account[])
 	const [presentAddAccountDialog, setPresentAddAccountDialog] = useState(false)
 	const [presentMenu, setPresentMenu] = useState(false)
+
+	const { t } = useTranslation()
 
 	async function reloadData() {
 		loadFromLocalStorage()
@@ -44,7 +47,7 @@ function App() {
 		<section className='mx-3 lg:w-2/3 lg:mx-auto'>
 			<div className='flex gap-2'>
 				<div className='w-full my-4 shadow-md bg-white border-[1px] rounded-full px-4 py-2'>
-					<input placeholder='Search my account...' className='outline-none w-full' />
+					<input placeholder={t('HOME_SEARCHBAR_PLACEHOLDER')} className='outline-none w-full' />
 				</div>
 				<div className='flex items-center justify-end'>
 					<button onClick={() => setPresentMenu(!presentMenu)}><Icon path={mdiDotsVertical} size={1} /></button>
