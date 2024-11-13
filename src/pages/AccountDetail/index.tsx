@@ -1,8 +1,7 @@
-import Icon from '@mdi/react'
-import { mdiArrowLeft } from '@mdi/js'
 import PilledTable from '../../components/PilledTable'
 import PilledTableCell from '../../components/PilledTableCell'
 import { useEffect, useState } from 'react'
+import Topbar from '../../components/Topbar'
 
 function AccountDetail() {
 	const [account, setAccount] = useState({} as Account)
@@ -23,20 +22,9 @@ function AccountDetail() {
 		setNameField(account.name)
 		setSecretField(account.secret)
 	}, [])
-
-	async function returnToLastPage() {
-		window.history.back()
-	}
 	return (<>
 		<section className='mx-3 lg:w-2/3 lg:mx-auto'>
-			<div>
-				<div className='flex items-center my-4 gap-2'>
-					<button onClick={returnToLastPage}>
-						<Icon path={mdiArrowLeft} size={1} />
-					</button>
-					<div className='text-xl font-bold'>Account detail</div>
-				</div>
-			</div>
+			<Topbar title='Account Detail' />
 
 			<PilledTable header='Account information'>
 				<PilledTableCell>

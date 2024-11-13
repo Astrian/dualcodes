@@ -2,6 +2,7 @@ import Switch from "react-switch"
 import { useState, useEffect } from "react"
 import InitialSyncingDialog from "./InitialSyncingDialog"
 import ConnectQRCodeDialog from "./ConnectQRCodeDialog"
+import Topbar from "../../components/Topbar"
 
 function Preferences() {
 	const [syncing, setSyncing] = useState(false)
@@ -27,7 +28,8 @@ function Preferences() {
 
 	return(<>
 		<section className='mx-3 lg:w-2/3 lg:mx-auto mt-4'>
-			<div className="text-4xl font-bold">Preferences</div>
+			<Topbar title='Preferences' />
+
 			<div className="rounded-md border-[1px] border-slate-300 mt-4">
 				<div className="p-4 bg-slate-300 font-bold rounded-t-md">Syncing</div>
 				<div className="bg-white rounded-b-md">
