@@ -62,6 +62,8 @@ const en = {
 		"HOME_LOADING": "加载中...",
 		"HOME_ADDACCODIALOG_SUCCESS": "帐户已添加",
 		"PREFERENCE_CONNECTDIALOG_TEXTAREA_COPIED": "代码已复制",
+		"HOME_RECOVERDIALOG_CONNECTEDTOAST": "已连接至同步服务",
+		"HOME_RECOVERDIALOG_CANNOTCONNECTTOAST": "无法连接至同步服务，请确认连接信息是否正确，或网络是否正常。",
 	}
 }
 

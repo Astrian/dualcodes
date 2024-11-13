@@ -3,6 +3,7 @@ import { mdiClose } from '@mdi/js'
 import axios from 'axios'
 import { Scanner } from '@yudiel/react-qr-scanner'
 import { useTranslation } from 'react-i18next'
+import { toast } from 'react-toastify'
 
 function RecoverSyncingDialog(props: {
 	dismiss: () => void,
@@ -59,9 +60,11 @@ function RecoverSyncingDialog(props: {
 			if (response.data.status !== "success") return
 			localStorage.setItem('tfa_sync', JSON.stringify(syncConfig))
 			props.refreshList()
+			toast(t('HOME_RECOVERDIALOG_CONNECTEDTOAST'), {type: 'info'})
 			props.dismiss()
 		} catch (e) {
-			console.error(e)
+			toast(t('HOME_RECOVERDIALOG_CANNOTCONNECTTOAST'), {type: 'error'})
+			props.dismiss()
 		}
 	}
 
