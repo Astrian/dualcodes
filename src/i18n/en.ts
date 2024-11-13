@@ -35,6 +35,7 @@ const en = {
 		"PREFERENCE_BACKUP_IMPORT_DESC": "Replace data in the browser with data in the backup file.",
 		"PREFERENCE_BACKUP_SECURITYTIP_TITLE": "Security warning",
 		"PREFERENCE_BACKUP_SECURITYTIP_BODY": "The exported file includes two-factor authentication keys for all your accounts with plain text. Please keep this file safe and do not disclose it to others. It is not recommended to back it up to the Internet.",
+		"PREFERENCE_OTHERS_TITLE": "Others",
 		"PREFERENCE_OTHERS_ERASE_TITLE": "Erase all data and preferences",
 		"PREFERENCE_OTHERS_ERASE_DESC": "Delete all data and preferences, including accounts, sync configurations, etc.",
 		"PREFERENCE_OTHERS_ERASE_CONFIRM": "Are you sure to delete all data and preferences? This operation is irreversible.",

@@ -35,6 +35,7 @@ const en = {
 		"PREFERENCE_BACKUP_IMPORT_DESC": "将浏览器中的数据替换为备份文件中的数据。",
 		"PREFERENCE_BACKUP_SECURITYTIP_TITLE": "安全提示",
 		"PREFERENCE_BACKUP_SECURITYTIP_BODY": "导出的文件会以明文存储包括你所有帐户的双因素验证密钥。请妥善保管此文件，不要泄露给他人。不建议将其备份至互联网位置。",
+		"PREFERENCE_OTHERS_TITLE": "其他",
 		"PREFERENCE_OTHERS_ERASE_TITLE": "抹掉所有数据和偏好设置",
 		"PREFERENCE_OTHERS_ERASE_DESC": "删除所有数据和偏好设置，包括帐户、同步配置等。",
 		"PREFERENCE_OTHERS_ERASE_CONFIRM": "你确定要删除所有数据和偏好设置吗？此操作不可逆。",
