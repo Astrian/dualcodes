@@ -37,19 +37,15 @@ async function syncToServer() {
 		const ivBase64 = btoa(String.fromCharCode(...iv))
 		const encryptedBase64 = btoa(String.fromCharCode(...new Uint8Array(encrypted)))
 
-		try {
-			let response = await axios.post('/api/dualcodes/save', {
-				callPwd: syncConfig.password,
-				id: syncConfig.id,
-				data: JSON.stringify({
-					iv: ivBase64,
-					data: encryptedBase64
-				})
+		let response = await axios.post('/api/dualcodes/save', {
+			callPwd: syncConfig.password,
+			id: syncConfig.id,
+			data: JSON.stringify({
+				iv: ivBase64,
+				data: encryptedBase64
 			})
-			console.log(response.data)
-		} catch (e) {
-			console.error(e)
-		}
+		})
+		console.log(response.data)
 	}
 }
 

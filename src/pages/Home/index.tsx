@@ -14,8 +14,12 @@ function App() {
 
 	async function reloadData() {
 		loadFromLocalStorage()
-		await loadFromServer()
-		loadFromLocalStorage()
+		try {
+			await loadFromServer()
+			loadFromLocalStorage()
+		} catch (e) {
+			console.error(e)
+		}
 	}
 
 	async function loadFromLocalStorage() {
