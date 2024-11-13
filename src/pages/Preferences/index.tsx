@@ -50,12 +50,55 @@ function Preferences() {
 		setSyncId(JSON.parse(localStorage.getItem('tfa_sync') || `{ "id": "" }`).id)
 	}, [])
 
+	async function exportToJSON() {
+		let data = {
+			accounts: JSON.parse(localStorage.getItem('tfa_accounts') || '[]'),
+			tags: JSON.parse(localStorage.getItem('tfa_tags') || '[]'),
+		}
+
+		let blob = new Blob([JSON.stringify(data)], { type: 'application/json' })
+		let url = URL.createObjectURL(blob)
+		let a = document.createElement('a')
+		a.href = url
+		const date = new Date()
+		const dateString = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}-${date.getHours()}-${date.getMinutes()}-${date.getSeconds()}`
+		a.download = `DualCodes-Backup-${dateString}.json`
+		a.click()
+	}
+
+	async function importFromJSON() {
+		// file select
+		let input = document.createElement('input')
+		input.type = 'file'
+		input.accept = '.json'
+		input.click()
+		input.onchange = async () => {
+			let file = input.files?.[0]
+			if (!file) return
+
+			// read file
+			let data = await file.text()
+			let json = JSON.parse(data)
+
+			// check data
+			if (!json.accounts || !json.tags) {
+				alert('Invalid file')
+				return
+			}
+
+			// import data
+			localStorage.setItem('tfa_accounts', JSON.stringify(json.accounts))
+			localStorage.setItem('tfa_tags', JSON.stringify(json.tags))
+			alert('Imported')
+		}
+	}
+
 	return(<>
 		<section className='mx-3 lg:w-2/3 lg:mx-auto mt-4'>
 			<Topbar title={t('PREFERENCE_TITLE')} />
 
 			<PilledTable header={t('PREFERENCE_SYNCING_TITLE')}>
-			<PilledTableCell>
+				<PilledTableCell>
 					<div className="font-semibold">{t('PREFERENCE_SYNCING_FEATURESWITCH_TITLE')}</div>
 					<div className="flex items-center gap-3">
 						<Switch checked={syncing} onChange={toggleSyncing} />
@@ -109,6 +152,29 @@ function Preferences() {
 						</button>
 					</PilledTableCell>
 				</>}
+			</PilledTable>
+
+			<PilledTable header={t('PREFERENCE_BACKUP_TITLE')}>
+				<PilledTableCell>
+						<button className="w-full text-left" onClick={exportToJSON}>
+							<div className="text-sky-500">{t('PREFERENCE_BACKUP_EXPORT')}</div>
+							<div className="text-sm text-sky-500/80">{t('PREFERENCE_BACKUP_EXPORT_DESC')}</div>
+						</button>
+					</PilledTableCell>
+
+					<PilledTableCell>
+						<button className="w-full text-left" onClick={importFromJSON}>
+							<div className="text-sky-500">{t('PREFERENCE_BACKUP_IMPORT')}</div>
+							<div className="text-sm text-sky-500/80">{t('PREFERENCE_BACKUP_IMPORT_DESC')}</div>
+						</button>
+					</PilledTableCell>
+
+					<PilledTableCell>
+						<div className="font-semibold">{t('PREFERENCE_BACKUP_SECURITYTIP_TITLE')}</div>
+						<div className="flex flex-col">
+							<div>{t('PREFERENCE_BACKUP_SECURITYTIP_BODY')}</div>
+						</div>
+					</PilledTableCell>
 			</PilledTable>
 		</section>
 

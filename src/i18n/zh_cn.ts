@@ -27,7 +27,14 @@ const en = {
 		"PREFERENCE_FORCEFETCH_DESC": "从服务器获取数据并覆盖当前浏览器上的数据。",
 		"PREFERENCE_FORCEPUSH": "强制备份至服务器",
 		"PREFERENCE_FORCEPUSH_DESC": "用当前浏览器中的数据替换服务器上的数据。",
-		"PREFERENCE_TURNOFFSYNCINGWARN": "若关闭同步功能，此浏览器中的数据将保留，但不会与服务器上的数据同步。"
+		"PREFERENCE_TURNOFFSYNCINGWARN": "若关闭同步功能，此浏览器中的数据将保留，但不会与服务器上的数据同步。",
+		"PREFERENCE_BACKUP_TITLE": "离线备份",
+		"PREFERENCE_BACKUP_EXPORT": "导出数据到文件",
+		"PREFERENCE_BACKUP_EXPORT_DESC": "将所有数据导出到一个文件中，以便导入或备份。",
+		"PREFERENCE_BACKUP_IMPORT": "从文件导入数据",
+		"PREFERENCE_BACKUP_IMPORT_DESC": "将浏览器中的数据替换为备份文件中的数据。",
+		"PREFERENCE_BACKUP_SECURITYTIP_TITLE": "安全提示",
+		"PREFERENCE_BACKUP_SECURITYTIP_BODY": "导出的文件会以明文存储包括你所有帐户的双因素验证密钥。请妥善保管此文件，不要泄露给他人。不建议将其备份至互联网位置。"
 	}
 }
 

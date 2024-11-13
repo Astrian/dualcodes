@@ -27,7 +27,14 @@ const en = {
 		"PREFERENCE_FORCEFETCH_DESC": "Fetch data from server and overwrite data on your current browser.",
 		"PREFERENCE_FORCEPUSH": "Force push to server",
 		"PREFERENCE_FORCEPUSH_DESC": "Replace server data with the data in current browser.",
-		"PREFERENCE_TURNOFFSYNCINGWARN": "If you turn the syncing off, the data in this browser will remain, but will not be sync with the data on server."
+		"PREFERENCE_TURNOFFSYNCINGWARN": "If you turn the syncing off, the data in this browser will remain, but will not be sync with the data on server.",
+		"PREFERENCE_BACKUP_TITLE": "Offline backup",
+		"PREFERENCE_BACKUP_EXPORT": "Export data to a file",
+		"PREFERENCE_BACKUP_EXPORT_DESC": "Export all data to a file for import or backup.",
+		"PREFERENCE_BACKUP_IMPORT": "Import data from a file",
+		"PREFERENCE_BACKUP_IMPORT_DESC": "Replace data in the browser with data in the backup file.",
+		"PREFERENCE_BACKUP_SECURITYTIP_TITLE": "Security warning",
+		"PREFERENCE_BACKUP_SECURITYTIP_BODY": "The exported file includes two-factor authentication keys for all your accounts with plain text. Please keep this file safe and do not disclose it to others. It is not recommended to back it up to the Internet."
 	}
 }
 
