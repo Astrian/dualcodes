@@ -4,6 +4,7 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Home from './pages/Home/index.tsx'
 import Preferences from './pages/Preferences/index.tsx'
+import AccountDetail from './pages/AccountDetail/index.tsx'
 
 const router = createBrowserRouter([
   {
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
   {
     path: '/preferences',
     element: <Preferences />,
+  },
+  {
+    path: '/accounts/:id',
+    element: <AccountDetail />,
   }
 ])
 

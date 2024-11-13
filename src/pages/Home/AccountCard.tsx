@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { CronJob } from 'cron'
 import Icon from '@mdi/react'
 import { mdiDotsVertical } from '@mdi/js'
+import { Link } from 'react-router-dom'
 
 function AccountCard(props: { account: Account }) {
 	const [otp, setOtp] = useState('******')
@@ -40,9 +41,11 @@ function AccountCard(props: { account: Account }) {
 				
 			</div>
 			<div>
-				<button className='min-w-6'>
-					<Icon path={mdiDotsVertical} size={1} />
-				</button>
+				<Link to={`/accounts/${props.account.id}`} className='min-w-6'>
+					<button className='min-w-6'>
+						<Icon path={mdiDotsVertical} size={1} />
+					</button>
+				</Link>
 			</div>
 		</div>
 	</>)
