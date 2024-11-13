@@ -46,12 +46,12 @@ function App() {
 	return (<>
 		<section className='mx-3 lg:w-2/3 lg:mx-auto'>
 			<div className='flex gap-2'>
-				<div className='w-full my-4 shadow-md bg-white border-[1px] rounded-full px-4 py-2'>
-					<input placeholder={t('HOME_SEARCHBAR_PLACEHOLDER')} className='outline-none w-full' />
+				<div className='w-full my-4 shadow-md bg-white dark:bg-slate-600 border-[1px] dark:border-slate-500 rounded-full px-4 py-2'>
+					<input placeholder={t('HOME_SEARCHBAR_PLACEHOLDER')} className='outline-none w-full dark:bg-slate-600' />
 				</div>
 				<div className='flex items-center justify-end'>
 					<button onClick={() => setPresentMenu(!presentMenu)}><Icon path={mdiDotsVertical} size={1} /></button>
-					{ presentMenu && <div className='absolute top-16 z-10 bg-white shadow-lg rounded-md border-[1px] border-gray-200 min-w-40 py-2'>
+					{ presentMenu && <div className='absolute top-16 z-10 bg-white dark:bg-slate-600 shadow-lg rounded-md border-[1px] border-gray-200 dark:border-slate-500 min-w-40 py-2'>
 						<ul>
 							<li className='px-4 py-2 hover:bg-slate-100 cursor-pointer' onClick={() => {setPresentMenu(false); setPresentAddAccountDialog(true)}}>{t('HOME_MENU_ADDACCOUNT')}</li>
 							<Link to="/preferences"><li className='px-4 py-2 hover:bg-slate-100 cursor-pointer'>{t('HOME_MENU_PREFERENCES')}</li></Link>

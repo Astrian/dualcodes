@@ -31,7 +31,7 @@ function AccountCard(props: { account: Account }) {
 	}
 
 	return (<>
-		<div className='border-[1px] border-gray-100 shadow-md rounded-md p-2 select-none bg-white flex items-center lg:items-start'>
+		<div className='border-[1px] border-gray-200 dark:border-slate-600 shadow-md rounded-md p-2 select-none bg-white dark:bg-slate-600 flex items-center lg:items-start'>
 			<div className='flex flex-row-reverse justify-between items-center lg:flex-col lg:items-start flex-1'>
 				<div className='text-4xl cursor-pointer' onClick={copyOTP}>{otp}</div>
 				<div className='flex flex-col w-36 lg:w-full'>

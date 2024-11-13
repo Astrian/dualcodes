@@ -136,7 +136,7 @@ function Preferences() {
 
 					<PilledTableCell>
 						<button className="w-full text-left" onClick={() => setPresentQRCodeDialog(true)}>
-							<div className="text-sky-500">{t('PREFERENCE_CONNECTNEWDEVICE')}</div>
+							<div className="text-sky-500 dark:text-sky-300">{t('PREFERENCE_CONNECTNEWDEVICE')}</div>
 						</button>
 					</PilledTableCell>
 
@@ -147,8 +147,8 @@ function Preferences() {
 								setFetchFromServerTimeStamp(Date.now())
 							} catch (e) {}
 						}}>
-							<div className="text-sky-500">{t('PREFERENCE_FORCEFETCH')}</div>
-							<div className="text-sm text-sky-500/80">{t('PREFERENCE_FORCEFETCH_DESC')}</div>
+							<div className="text-sky-500 dark:text-sky-300">{t('PREFERENCE_FORCEFETCH')}</div>
+							<div className="text-sm text-sky-500/80 dark:text-sky-300/70">{t('PREFERENCE_FORCEFETCH_DESC')}</div>
 						</button>
 					</PilledTableCell>
 
@@ -159,8 +159,8 @@ function Preferences() {
 								setUpdateToServerTimeStamp(Date.now())
 							} catch (e) {}
 						}}>
-							<div className="text-sky-500">{t('PREFERENCE_FORCEPUSH')}</div>
-							<div className="text-sm text-sky-500/80">{t('PREFERENCE_FORCEPUSH_DESC')}</div>
+							<div className="text-sky-500 dark:text-sky-300">{t('PREFERENCE_FORCEPUSH')}</div>
+							<div className="text-sm text-sky-500/80 dark:text-sky-300/70">{t('PREFERENCE_FORCEPUSH_DESC')}</div>
 						</button>
 					</PilledTableCell>
 				</>}
@@ -169,15 +169,15 @@ function Preferences() {
 			<PilledTable header={t('PREFERENCE_BACKUP_TITLE')}>
 				<PilledTableCell>
 						<button className="w-full text-left" onClick={exportToJSON}>
-							<div className="text-sky-500">{t('PREFERENCE_BACKUP_EXPORT')}</div>
-							<div className="text-sm text-sky-500/80">{t('PREFERENCE_BACKUP_EXPORT_DESC')}</div>
+							<div className="text-sky-500 dark:text-sky-300">{t('PREFERENCE_BACKUP_EXPORT')}</div>
+							<div className="text-sm text-sky-500/80 dark:text-sky-300/70">{t('PREFERENCE_BACKUP_EXPORT_DESC')}</div>
 						</button>
 					</PilledTableCell>
 
 					<PilledTableCell>
 						<button className="w-full text-left" onClick={importFromJSON}>
-							<div className="text-sky-500">{t('PREFERENCE_BACKUP_IMPORT')}</div>
-							<div className="text-sm text-sky-500/80">{t('PREFERENCE_BACKUP_IMPORT_DESC')}</div>
+							<div className="text-sky-500 dark:text-sky-300">{t('PREFERENCE_BACKUP_IMPORT')}</div>
+							<div className="text-sm text-sky-500/80 dark:text-sky-300/70">{t('PREFERENCE_BACKUP_IMPORT_DESC')}</div>
 						</button>
 					</PilledTableCell>
 
@@ -192,8 +192,8 @@ function Preferences() {
 			<PilledTable header={t('PREFERENCE_OTHERS_TITLE')}>
 				<PilledTableCell>
 					<button className="w-full text-left" onClick={eraseAllData}>
-						<div className="text-red-500">{t('PREFERENCE_OTHERS_ERASE_TITLE')}</div>
-						<div className="text-sm text-red-500/80">{t('PREFERENCE_OTHERS_ERASE_DESC')}</div>
+						<div className="text-red-500 dark:text-red-400">{t('PREFERENCE_OTHERS_ERASE_TITLE')}</div>
+						<div className="text-sm text-red-500/80 dark:text-red-400/70">{t('PREFERENCE_OTHERS_ERASE_DESC')}</div>
 					</button>
 				</PilledTableCell>
 			</PilledTable>

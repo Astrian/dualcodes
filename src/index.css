@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 body {
-  @apply bg-slate-100 select-none;
+  @apply bg-slate-100 select-none dark:bg-slate-800 dark:text-white;
 }
