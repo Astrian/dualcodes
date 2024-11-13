@@ -67,6 +67,8 @@ const en = {
 		"HOME_ADDACCODIALOG_INVALIDQR": "无效的二维码",
 		"ACCOUNTDETAIL_SAVEOPS_SUCCESS": "更改已保存",
 		"ACCOUNTDETAIL_DELOPS_SUCCESS": "帐户已删除",
+		"HOME_COPYTIP": "点击双因素验证代码以复制",
+		"HOME_ACCOCARD_COPIED": "已复制「{{account}}」的双因素验证代码",
 	}
 }
 

@@ -7,8 +7,11 @@ import { Link } from 'react-router-dom'
 import { useRef } from 'react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
+import { toast } from 'react-toastify'
+import { useTranslation } from 'react-i18next'
 
 function AccountCard(props: { account: Account }) {
+	const { t } = useTranslation()
 	const [otp, setOtp] = useState('******')
 	useEffect(() => {
 		refreshOTP()
@@ -139,6 +142,9 @@ function AccountCard(props: { account: Account }) {
 
 	function copyOTP() {
 		navigator.clipboard.writeText(otp)
+		toast(t('HOME_ACCOCARD_COPIED', {
+			account: props.account.name
+		}), {type: 'info'})
 	}
 
 	return (<>

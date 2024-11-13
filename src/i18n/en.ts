@@ -67,6 +67,8 @@ const en = {
 		"HOME_ADDACCODIALOG_INVALIDQR": "Invalid QR code",
 		"ACCOUNTDETAIL_SAVEOPS_SUCCESS": "Changes saved",
 		"ACCOUNTDETAIL_DELOPS_SUCCESS": "Account deleted",
+		"HOME_COPYTIP": "Click the 2FA code to copy it",
+		"HOME_ACCOCARD_COPIED": "2FA code for “{{account}}” is copied",
 	}
 }
 
