@@ -65,6 +65,8 @@ const en = {
 		"HOME_RECOVERDIALOG_CONNECTEDTOAST": "Connected to syncing service",
 		"HOME_RECOVERDIALOG_CANNOTCONNECTTOAST": "Cannot connect to syncing service. Please check if the connection information is correct, or internet is available.",
 		"HOME_ADDACCODIALOG_INVALIDQR": "Invalid QR code",
+		"ACCOUNTDETAIL_SAVEOPS_SUCCESS": "Changes saved",
+		"ACCOUNTDETAIL_DELOPS_SUCCESS": "Account deleted",
 	}
 }
 

@@ -6,6 +6,7 @@ import Icon from '@mdi/react'
 import { mdiEye, mdiEyeOff } from '@mdi/js'
 import syncToServer from '../../utils/syncToServer'
 import { useTranslation } from 'react-i18next'
+import { toast } from 'react-toastify'
 
 function AccountDetail() {
 	const {t} = useTranslation()
@@ -43,6 +44,7 @@ function AccountDetail() {
 		}
 		localStorage.setItem('tfa_accounts', JSON.stringify(accounts))
 		syncToServer()
+		toast(t('ACCOUNTDETAIL_SAVEOPS_SUCCESS'), {type: 'success'})
 		window.history.back()
 	}
 
@@ -54,6 +56,7 @@ function AccountDetail() {
 		const newAccounts = accounts.filter(a => a.id !== accountId)
 		localStorage.setItem('tfa_accounts', JSON.stringify(newAccounts))
 		syncToServer()
+		toast(t('ACCOUNTDETAIL_DELOPS_SUCCESS'), {type: 'success'})
 		window.history.back()
 	}
 
