@@ -11,6 +11,22 @@ const en = {
 		"HOME_ACCOUNTCOUNT_zero": "No accounts",
 		"HOME_ACCOUNTCOUNT_one": "1 account",
 		"HOME_ACCOUNTCOUNT_other": "{{count}} accounts",
+		"PREFERENCE_TITLE": "Preferences",
+		"PREFERENCE_SYNCING_TITLE": "Syncing",
+		"PREFERENCE_SYNCING_FEATURESWITCH_TITLE": "Syncing feature",
+		"PREFERENCE_SYNCING_FEATURESWITCH_ON": "On",
+		"PREFERENCE_SYNCING_FEATURESWITCH_OFF": "Off",
+		"PREFERENCE_SYNCING_ID_TITLE": "Sync ID",
+		"PREFERENCE_SYNCING_TIME_TITLE": "Last sync time",
+		"PREFERENCE_SYNCING_TIME_FETCH": "Last fetch at {{text}}",
+		"PREFERENCE_SYNCING_TIME_FETCH_NEVER": "Never fetch from server",
+		"PREFERENCE_SYNCING_TIME_PUSH": "Last push at {{text}}",
+		"PREFERENCE_SYNCING_TIME_PUSH_NEVER": "Never push to server",
+		"PREFERENCE_CONNECTNEWDEVICE": "Connect a new device",
+		"PREFERENCE_FORCEFETCH": "Force fetch from server",
+		"PREFERENCE_FORCEFETCH_DESC": "Fetch data from server and overwrite data on your current browser.",
+		"PREFERENCE_FORCEPUSH": "Force push to server",
+		"PREFERENCE_FORCEPUSH_DESC": "Replace server data with the data in current browser.",
 	}
 }
 

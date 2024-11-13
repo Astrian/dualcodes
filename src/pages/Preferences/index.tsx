@@ -9,10 +9,13 @@ import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import loadFromServer from "../../utils/loadFromServer"
 import syncToServer from "../../utils/syncToServer"
+import { useTranslation } from "react-i18next"
 
 dayjs.extend(relativeTime)
 
 function Preferences() {
+	const { t } = useTranslation()
+
 	const [syncing, setSyncing] = useState(false)
 	const [presentInitialSyncingDialog, setPresentInitialSyncingDialog] = useState(false)
 	const [presentQRCodeDialog, setPresentQRCodeDialog] = useState(false)
@@ -49,36 +52,36 @@ function Preferences() {
 
 	return(<>
 		<section className='mx-3 lg:w-2/3 lg:mx-auto mt-4'>
-			<Topbar title='Preferences' />
+			<Topbar title={t('PREFERENCE_TITLE')} />
 
-			<PilledTable header='Syncing'>
+			<PilledTable header={t('PREFERENCE_SYNCING_TITLE')}>
 			<PilledTableCell>
-					<div className="font-semibold">Syncing feature</div>
+					<div className="font-semibold">{t('PREFERENCE_SYNCING_FEATURESWITCH_TITLE')}</div>
 					<div className="flex items-center gap-3">
 						<Switch checked={syncing} onChange={toggleSyncing} />
-						<span>{ syncing ? "On" : "Off" }</span>
+						<span>{ syncing ? t('PREFERENCE_SYNCING_FEATURESWITCH_ON') : t('PREFERENCE_SYNCING_FEATURESWITCH_OFF') }</span>
 					</div>
 				</PilledTableCell>
 
 				{syncing && <>
 					<PilledTableCell>
-						<div className="font-semibold">Sync ID</div>
+						<div className="font-semibold">{t('PREFERENCE_SYNCING_ID_TITLE')}</div>
 						<div className="flex flex-col">
 							<div>{syncId}</div>
 						</div>
 					</PilledTableCell>
 
 					<PilledTableCell>
-						<div className="font-semibold">Last sync time</div>
+						<div className="font-semibold">{t('PREFERENCE_SYNCING_TIME_TITLE')}</div>
 						<div className="flex flex-col">
-							<div>Fetch: {fetchFromServerTimeStamp === 0 ? 'Never' : dayjs(fetchFromServerTimeStamp).fromNow()}</div>
-							<div>Push: {updateToServerTimeStamp === 0 ? 'Never' : dayjs(updateToServerTimeStamp).fromNow()}</div>
+							<div>{fetchFromServerTimeStamp === 0 ? t('PREFERENCE_SYNCING_TIME_FETCH_NEVER') : t('PREFERENCE_SYNCING_TIME_FETCH', { text: dayjs(fetchFromServerTimeStamp).fromNow() })}</div>
+							<div>{updateToServerTimeStamp === 0 ? t('PREFERENCE_SYNCING_TIME_PUSH_NEVER') : t('PREFERENCE_SYNCING_TIME_PUSH', { text: dayjs(updateToServerTimeStamp).fromNow() })}</div>
 						</div>
 					</PilledTableCell>
 
 					<PilledTableCell>
 						<button className="w-full text-left" onClick={() => setPresentQRCodeDialog(true)}>
-							<div className="text-sky-500">Connect a new device</div>
+							<div className="text-sky-500">{t('PREFERENCE_CONNECTNEWDEVICE')}</div>
 						</button>
 					</PilledTableCell>
 
@@ -89,8 +92,8 @@ function Preferences() {
 								setFetchFromServerTimeStamp(Date.now())
 							} catch (e) {}
 						}}>
-							<div className="text-sky-500">Force fetch from server</div>
-							<div className="text-sm text-sky-500/80">Fetch data from server and overwrite data on your current browser.</div>
+							<div className="text-sky-500">{t('PREFERENCE_FORCEFETCH')}</div>
+							<div className="text-sm text-sky-500/80">{t('PREFERENCE_FORCEFETCH_DESC')}</div>
 						</button>
 					</PilledTableCell>
 
@@ -101,8 +104,8 @@ function Preferences() {
 								setUpdateToServerTimeStamp(Date.now())
 							} catch (e) {}
 						}}>
-							<div className="text-sky-500">Force push local data</div>
-							<div className="text-sm text-sky-500/80">Replace server data with the data in current browser.</div>
+							<div className="text-sky-500">{t('PREFERENCE_FORCEPUSH')}</div>
+							<div className="text-sm text-sky-500/80">{t('PREFERENCE_FORCEPUSH_DESC')}</div>
 						</button>
 					</PilledTableCell>
 				</>}
