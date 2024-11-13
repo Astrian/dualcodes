@@ -43,6 +43,17 @@ function AccountDetail() {
 		window.history.back()
 	}
 
+	async function deleteAccount() {
+		if (!confirm('Your account will no longer accessable, and may be removed from all your synced devices.')) return
+		const accountsLS = localStorage.getItem('tfa_accounts')
+		if (!accountsLS) return
+		const accounts = JSON.parse(accountsLS) as Account[]
+		const newAccounts = accounts.filter(a => a.id !== accountId)
+		localStorage.setItem('tfa_accounts', JSON.stringify(newAccounts))
+		syncToServer()
+		window.history.back()
+	}
+
 	return (<>
 		<section className='mx-3 lg:w-2/3 lg:mx-auto'>
 			<Topbar title='Account Detail' />
@@ -78,7 +89,7 @@ function AccountDetail() {
 					<button className='text-sky-500 w-full text-left' onClick={savechanges}>Save changes</button>
 				</PilledTableCell>
 				<PilledTableCell>
-					<button className='text-red-500 w-full text-left'>Delete account</button>
+					<button className='text-red-500 w-full text-left' onClick={deleteAccount}>Delete account</button>
 				</PilledTableCell>
 			</PilledTable>
 		</section>
