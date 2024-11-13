@@ -60,7 +60,8 @@ const en = {
 		"HOME_RECOVERDIALOG_GUIDE": "Open DualCodes on your existing device, get connection QR code from Preferences, then align the QR code to the scanner or paste the code here.",
 		"HOME_RECOVERDIALOG_CODEPLACEHOLDER": "Paste the code here...",
 		"HOME_LOADING": "Loading...",
-		"HOME_ADDACCODIALOG_SUCCESS": "Account added"
+		"HOME_ADDACCODIALOG_SUCCESS": "Account added",
+		"PREFERENCE_CONNECTDIALOG_TEXTAREA_COPIED": "The code has been copied to clipboard",
 	}
 }
 

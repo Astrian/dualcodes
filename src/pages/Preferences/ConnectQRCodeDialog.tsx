@@ -3,6 +3,7 @@ import { mdiClose } from '@mdi/js'
 import QRCode from "react-qr-code"
 import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
+import { toast } from 'react-toastify'
 
 function ConnectQRCodeDialog(props: {
 	dismiss: () => void,
@@ -34,7 +35,10 @@ function ConnectQRCodeDialog(props: {
 						</div>
 						<div className='flex items-center justify-center text-center flex-col gap-2'>
 							<div>{t('PREFERENCE_CONNECTDIALOG_GUIDE')}</div>
-							<textarea className='w-full h-24 p-2 bg-yellow-100 font-mono border-[1px] border-yellow-400 rounded-md resize-none outline-none' value={btoa(encodeURIComponent(qrCode))} readOnly onClick={copyCode} />
+							<textarea className='w-full h-24 p-2 bg-yellow-100 font-mono border-[1px] border-yellow-400 rounded-md resize-none outline-none' value={btoa(encodeURIComponent(qrCode))} readOnly onClick={() => {
+								toast(t('PREFERENCE_CONNECTDIALOG_TEXTAREA_COPIED'), {type: 'info'})
+								copyCode()
+							}} />
 							<div className='text-gray-500 text-sm'>{t('PREFERENCE_CONNECTDIALOG_CLICKTOCOPY')}</div>
 						</div>
 					</div>

@@ -60,7 +60,8 @@ const en = {
 		"HOME_RECOVERDIALOG_GUIDE": "在现有设备上打开 DualCodes，从偏好设置中获取连接二维码，然后将二维码对准扫描器或在此处粘贴代码。",
 		"HOME_RECOVERDIALOG_CODEPLACEHOLDER": "在此处粘贴代码...",
 		"HOME_LOADING": "加载中...",
-		"HOME_ADDACCODIALOG_SUCCESS": "帐户已添加"
+		"HOME_ADDACCODIALOG_SUCCESS": "帐户已添加",
+		"PREFERENCE_CONNECTDIALOG_TEXTAREA_COPIED": "代码已复制",
 	}
 }
 
