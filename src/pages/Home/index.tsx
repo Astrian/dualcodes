@@ -62,7 +62,7 @@ function App() {
 	}, [])
 	return (<>
 		{ loading && <>
-			<div className='fixed top-0 left-0 w-full h-full bg-black/40 flex justify-center items-center'>
+			<div className='fixed top-0 left-0 w-full h-full bg-black/20 flex justify-center items-center'>
 				<div className='bg-white dark:bg-slate-600 p-4 rounded-md shadow-lg'>
 					<div className='text-xl font-bold'>{t('HOME_LOADING')}</div>
 				</div>

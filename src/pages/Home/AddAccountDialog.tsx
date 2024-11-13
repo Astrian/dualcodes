@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { Scanner } from '@yudiel/react-qr-scanner'
 import syncToServer from '../../utils/syncToServer'
 import { useTranslation } from 'react-i18next'
+import { toast } from 'react-toastify'
 
 function AddAccountDialog(props: {
 	dismiss: () => void,
@@ -31,11 +32,11 @@ function AddAccountDialog(props: {
 			if (key === 'account') params.account = decodeURIComponent(value)
 		})
 		if (!params.issuer) {
-			const issuer = result[0].rawValue.split('?')[0].split('otpauth://totp/')[1].split(':')[0]
+			const issuer = result[0].rawValue.split('?')[0].split('otpauth://totp/')[1].split(':')[0] ?? ''
 			params.issuer = decodeURIComponent(issuer)
 		}
 		if (!params.account) {
-			const account = result[0].rawValue.split('?')[0].split('otpauth://totp/')[1].split(':')[1]
+			const account = result[0].rawValue.split('?')[0].split('otpauth://totp/')[1].split(':')[1] ?? ''
 			params.account = decodeURIComponent(account)
 		}
 		
@@ -72,6 +73,8 @@ function AddAccountDialog(props: {
 		localStorage.setItem('tfa_accounts', JSON.stringify(tfaAccounts))
 
 		syncToServer()
+
+		toast(t('HOME_ADDACCODIALOG_SUCCESS'), {type: 'success'})
 
 		props.refreshList()
 		props.dismiss()

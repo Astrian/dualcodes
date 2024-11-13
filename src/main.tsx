@@ -9,6 +9,8 @@ import i18n from "i18next"
 import { initReactI18next } from "react-i18next"
 import resources from "./i18n"
 import LanguageDetector from 'i18next-browser-languagedetector'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 i18n.use(initReactI18next).use(LanguageDetector).init({
 	resources,
@@ -35,6 +37,7 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
+    <ToastContainer />
     <RouterProvider router={router}/>
   </StrictMode>,
 )
