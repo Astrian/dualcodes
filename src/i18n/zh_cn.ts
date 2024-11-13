@@ -27,6 +27,7 @@ const en = {
 		"PREFERENCE_FORCEFETCH_DESC": "从服务器获取数据并覆盖当前浏览器上的数据。",
 		"PREFERENCE_FORCEPUSH": "强制备份至服务器",
 		"PREFERENCE_FORCEPUSH_DESC": "用当前浏览器中的数据替换服务器上的数据。",
+		"PREFERENCE_TURNOFFSYNCINGWARN": "若关闭同步功能，此浏览器中的数据将保留，但不会与服务器上的数据同步。"
 	}
 }
 

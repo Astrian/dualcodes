@@ -27,6 +27,7 @@ const en = {
 		"PREFERENCE_FORCEFETCH_DESC": "Fetch data from server and overwrite data on your current browser.",
 		"PREFERENCE_FORCEPUSH": "Force push to server",
 		"PREFERENCE_FORCEPUSH_DESC": "Replace server data with the data in current browser.",
+		"PREFERENCE_TURNOFFSYNCINGWARN": "If you turn the syncing off, the data in this browser will remain, but will not be sync with the data on server."
 	}
 }
 

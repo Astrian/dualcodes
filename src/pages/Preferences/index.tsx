@@ -25,7 +25,7 @@ function Preferences() {
 
 	function toggleSyncing() {
 		if (syncing) {
-			if (!confirm('The data in this browser will remain, but will not be sync with the data on server.')) return
+			if (!confirm(t("PREFERENCE_TURNOFFSYNCINGWARN"))) return
 
 			// remove sync config
 			localStorage.removeItem('tfa_sync')
