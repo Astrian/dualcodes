@@ -7,6 +7,8 @@ import PilledTable from "../../components/PilledTable"
 import PilledTableCell from "../../components/PilledTableCell"
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
+import loadFromServer from "../../utils/loadFromServer"
+import syncToServer from "../../utils/syncToServer"
 
 dayjs.extend(relativeTime)
 
@@ -75,20 +77,30 @@ function Preferences() {
 					</PilledTableCell>
 
 					<PilledTableCell>
-						<button className="w-full text-left">
+						<button className="w-full text-left" onClick={() => setPresentQRCodeDialog(true)}>
 							<div className="text-sky-500">Connect a new device</div>
 						</button>
 					</PilledTableCell>
 
 					<PilledTableCell>
-						<button className="w-full text-left">
+						<button className="w-full text-left" onClick={async () => {
+							try {
+								await loadFromServer()
+								setFetchFromServerTimeStamp(Date.now())
+							} catch (e) {}
+						}}>
 							<div className="text-sky-500">Force fetch from server</div>
 							<div className="text-sm text-sky-500/80">Will overwrite data on your current browser.</div>
 						</button>
 					</PilledTableCell>
 
 					<PilledTableCell>
-						<button className="w-full text-left">
+						<button className="w-full text-left" onClick={async () => {
+							try {
+								await syncToServer()
+								setUpdateToServerTimeStamp(Date.now())
+							} catch (e) {}
+						}}>
 							<div className="text-sky-500">Force overwrite server data</div>
 							<div className="text-sm text-sky-500/80">Replace server data with the data in current browser.</div>
 						</button>
