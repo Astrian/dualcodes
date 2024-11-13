@@ -62,21 +62,21 @@ function AccountDetail() {
 				<PilledTableCell>
 					<div className="font-semibold">Website</div>
 					<div>
-						<input type='text' className='w-full outline-none' placeholder='Awesome website' defaultValue={websiteField} />
+						<input type='text' className='w-full outline-none bg-transparent' placeholder='Awesome website' defaultValue={websiteField} />
 					</div>
 				</PilledTableCell>
 
 				<PilledTableCell>
 					<div className="font-semibold">Account Name</div>
 					<div>
-						<input type='text' className='w-full outline-none' placeholder='John Appleseed' defaultValue={nameField} />
+						<input type='text' className='w-full outline-none bg-transparent' placeholder='John Appleseed' defaultValue={nameField} />
 					</div>
 				</PilledTableCell>
 
 				<PilledTableCell>
 					<div className="font-semibold">2FA Secret</div>
 					<div className='flex'>
-						<input type={displaySecret ? 'text' : 'password'} className='w-full outline-none' placeholder='Awesome website' defaultValue={secretField} />
+						<input type={displaySecret ? 'text' : 'password'} className='w-full outline-none bg-transparent' placeholder='Awesome website' defaultValue={secretField} />
 						<button onClick={() => setDisplaySecret(!displaySecret)}>
 							{displaySecret ? <Icon path={mdiEyeOff} size={1} /> : <Icon path={mdiEye} size={1} />}
 						</button>
@@ -86,10 +86,10 @@ function AccountDetail() {
 
 			<PilledTable>
 				<PilledTableCell>
-					<button className='text-sky-500 w-full text-left' onClick={savechanges}>Save changes</button>
+					<button className='text-sky-500 w-full text-left dark:text-sky-300' onClick={savechanges}>Save changes</button>
 				</PilledTableCell>
 				<PilledTableCell>
-					<button className='text-red-500 w-full text-left' onClick={deleteAccount}>Delete account</button>
+					<button className='text-red-500 w-full text-left dark:text-red-400' onClick={deleteAccount}>Delete account</button>
 				</PilledTableCell>
 			</PilledTable>
 		</section>
