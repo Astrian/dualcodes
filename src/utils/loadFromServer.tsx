@@ -41,6 +41,11 @@ async function loadFromServer() {
 	const decryptedData = JSON.parse(decryptedString) as { accounts: Account[], tags: Tag[] }
 	localStorage.setItem('tfa_accounts', JSON.stringify(decryptedData.accounts))
 	localStorage.setItem('tfa_tags', JSON.stringify(decryptedData.tags))
+
+	const lastSyncTimeLS = localStorage.getItem('tfa_synctime')
+		const lastSyncTime = JSON.parse(lastSyncTimeLS ?? "{}") as { toServer: number, fromServer: number }
+		lastSyncTime.fromServer = Date.now()
+		localStorage.setItem('tfa_synctime', JSON.stringify(lastSyncTime))
 }
 
 export default loadFromServer

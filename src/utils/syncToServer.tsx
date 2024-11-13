@@ -46,6 +46,11 @@ async function syncToServer() {
 			})
 		})
 		console.log(response.data)
+
+		const lastSyncTimeLS = localStorage.getItem('tfa_synctime')
+		const lastSyncTime = JSON.parse(lastSyncTimeLS ?? "{}") as { toServer: number, fromServer: number }
+		lastSyncTime.toServer = Date.now()
+		localStorage.setItem('tfa_synctime', JSON.stringify(lastSyncTime))
 	}
 }
 
