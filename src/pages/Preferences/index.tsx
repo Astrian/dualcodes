@@ -3,15 +3,31 @@ import { useState, useEffect } from "react"
 import InitialSyncingDialog from "./InitialSyncingDialog"
 import ConnectQRCodeDialog from "./ConnectQRCodeDialog"
 import Topbar from "../../components/Topbar"
+import PilledTable from "../../components/PilledTable"
+import PilledTableCell from "../../components/PilledTableCell"
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
+
+dayjs.extend(relativeTime)
 
 function Preferences() {
 	const [syncing, setSyncing] = useState(false)
 	const [presentInitialSyncingDialog, setPresentInitialSyncingDialog] = useState(false)
 	const [presentQRCodeDialog, setPresentQRCodeDialog] = useState(false)
+	const [fetchFromServerTimeStamp, setFetchFromServerTimeStamp] = useState(0)
+	const [updateToServerTimeStamp, setUpdateToServerTimeStamp] = useState(0)
+	const [syncId, setSyncId] = useState('')
 
 	function toggleSyncing() {
 		if (syncing) {
-			// show dialog warn user that need to reset the local data to re-enable syncing
+			if (!confirm('The data in this browser will remain, but will not be sync with the data on server.')) return
+
+			// remove sync config
+			localStorage.removeItem('tfa_sync')
+			localStorage.removeItem('tfa_synctime')
+
+			// turn off syncing
+			setSyncing(false)
 		} else {
 			setPresentInitialSyncingDialog(true)
 		}
@@ -24,38 +40,61 @@ function Preferences() {
 	useEffect(() => {
 		let secret = localStorage.getItem('tfa_sync')
 		if (secret) setSyncing(true)
+		setFetchFromServerTimeStamp(JSON.parse(localStorage.getItem('tfa_synctime') || `{ "fromServer": 0, "toServer": 0 }`).fromServer)
+		setUpdateToServerTimeStamp(JSON.parse(localStorage.getItem('tfa_synctime') || `{ "fromServer": 0, "toServer": 0 }`).toServer)
+		setSyncId(JSON.parse(localStorage.getItem('tfa_sync') || `{ "id": "" }`).id)
 	}, [])
 
 	return(<>
 		<section className='mx-3 lg:w-2/3 lg:mx-auto mt-4'>
 			<Topbar title='Preferences' />
 
-			<div className="rounded-md border-[1px] border-slate-300 mt-4">
-				<div className="p-4 bg-slate-300 font-bold rounded-t-md">Syncing</div>
-				<div className="bg-white rounded-b-md">
-					<div className="flex justify-between p-4">
-						<div>Enable</div>
-						<Switch onChange={toggleSyncing} checked={syncing} />
+			<PilledTable header='Syncing'>
+			<PilledTableCell>
+					<div className="font-semibold">Syncing feature</div>
+					<div className="flex items-center gap-3">
+						<Switch checked={syncing} onChange={toggleSyncing} />
+						<span>{ syncing ? "On" : "Off" }</span>
 					</div>
+				</PilledTableCell>
 
-					{syncing && <>
-						<div className="flex justify-between p-4">
-							<div>Connect a new device</div>
-							<div className="flex gap-2">
-								<button className="bg-sky-500 px-2 py-1 rounded-md border-[1px] border-sky-600 text-white" onClick={() => setPresentQRCodeDialog(true)}>Present connect QR code</button>
-								<button className="bg-slate-100 px-2 py-1 rounded-md border-[1px] border-slate-200">Mannually set</button>
-							</div>
+				{syncing && <>
+					<PilledTableCell>
+						<div className="font-semibold">Sync ID</div>
+						<div className="flex flex-col">
+							<div>{syncId}</div>
 						</div>
-						<div className="flex justify-between p-4">
-							<div>Secure area</div>
-							<div className="flex gap-2">
-								<button className="bg-red-500 px-2 py-1 rounded-md border-[1px] border-red-600 text-white">Reset syncing secret</button>
-								<button className="bg-slate-100 px-2 py-1 rounded-md border-[1px] border-slate-200">Change syncing password</button>
-							</div>
+					</PilledTableCell>
+
+					<PilledTableCell>
+						<div className="font-semibold">Sync status</div>
+						<div className="flex flex-col">
+							<div>Last fetch from server operation: {fetchFromServerTimeStamp === 0 ? 'Never' : dayjs(fetchFromServerTimeStamp).fromNow()}</div>
+							<div>Last server overwriting in current browser: {updateToServerTimeStamp === 0 ? 'Never' : dayjs(updateToServerTimeStamp).fromNow()}</div>
 						</div>
-					</>}
-				</div>
-			</div>
+					</PilledTableCell>
+
+					<PilledTableCell>
+						<button className="w-full text-left">
+							<div className="text-sky-500">Connect a new device</div>
+						</button>
+					</PilledTableCell>
+
+					<PilledTableCell>
+						<button className="w-full text-left">
+							<div className="text-sky-500">Force fetch from server</div>
+							<div className="text-sm text-sky-500/80">Will overwrite data on your current browser.</div>
+						</button>
+					</PilledTableCell>
+
+					<PilledTableCell>
+						<button className="w-full text-left">
+							<div className="text-sky-500">Force overwrite server data</div>
+							<div className="text-sm text-sky-500/80">Replace server data with the data in current browser.</div>
+						</button>
+					</PilledTableCell>
+				</>}
+			</PilledTable>
 		</section>
 
 		{presentInitialSyncingDialog && <InitialSyncingDialog dismiss={() => {setPresentInitialSyncingDialog(false)}} launchSyncing={launchSyncing} />}

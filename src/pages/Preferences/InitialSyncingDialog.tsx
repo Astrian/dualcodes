@@ -70,6 +70,12 @@ function InitialSyncingDialog(props: { dismiss: () => void, launchSyncing: () =>
 			}
 			localStorage.setItem('tfa_sync', JSON.stringify(syncConfig))
 
+			// update syncing time
+			localStorage.setItem('tfa_synctime', JSON.stringify({
+				toServer: Date.now(),
+				fromServer: 0
+			}))
+
 			// dismiss dialog
 			props.dismiss()
 			props.launchSyncing()
