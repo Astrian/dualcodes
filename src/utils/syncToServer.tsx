@@ -37,20 +37,24 @@ async function syncToServer() {
 		const ivBase64 = btoa(String.fromCharCode(...iv))
 		const encryptedBase64 = btoa(String.fromCharCode(...new Uint8Array(encrypted)))
 
-		let response = await axios.post('/api/dualcodes/save', {
-			callPwd: syncConfig.password,
-			id: syncConfig.id,
-			data: JSON.stringify({
-				iv: ivBase64,
-				data: encryptedBase64
+		try {
+			let response = await axios.post('/api/dualcodes/save', {
+				callPwd: syncConfig.password,
+				id: syncConfig.id,
+				data: JSON.stringify({
+					iv: ivBase64,
+					data: encryptedBase64
+				})
 			})
-		})
-		console.log(response.data)
+			console.log(response.data)
 
-		const lastSyncTimeLS = localStorage.getItem('tfa_synctime')
-		const lastSyncTime = JSON.parse(lastSyncTimeLS ?? `{"toServer":0,"fromServer":0}`) as { toServer: number, fromServer: number }
-		lastSyncTime.toServer = Date.now()
-		localStorage.setItem('tfa_synctime', JSON.stringify(lastSyncTime))
+			const lastSyncTimeLS = localStorage.getItem('tfa_synctime')
+			const lastSyncTime = JSON.parse(lastSyncTimeLS ?? `{"toServer":0,"fromServer":0}`) as { toServer: number, fromServer: number }
+			lastSyncTime.toServer = Date.now()
+			localStorage.setItem('tfa_synctime', JSON.stringify(lastSyncTime))
+		} catch (e) {
+			throw e
+		}
 	}
 }
 
