@@ -69,10 +69,10 @@ function Preferences() {
 					</PilledTableCell>
 
 					<PilledTableCell>
-						<div className="font-semibold">Sync status</div>
+						<div className="font-semibold">Last sync time</div>
 						<div className="flex flex-col">
-							<div>Last fetch from server operation: {fetchFromServerTimeStamp === 0 ? 'Never' : dayjs(fetchFromServerTimeStamp).fromNow()}</div>
-							<div>Last server overwriting in current browser: {updateToServerTimeStamp === 0 ? 'Never' : dayjs(updateToServerTimeStamp).fromNow()}</div>
+							<div>Fetch: {fetchFromServerTimeStamp === 0 ? 'Never' : dayjs(fetchFromServerTimeStamp).fromNow()}</div>
+							<div>Push: {updateToServerTimeStamp === 0 ? 'Never' : dayjs(updateToServerTimeStamp).fromNow()}</div>
 						</div>
 					</PilledTableCell>
 
@@ -101,7 +101,7 @@ function Preferences() {
 								setUpdateToServerTimeStamp(Date.now())
 							} catch (e) {}
 						}}>
-							<div className="text-sky-500">Force overwrite server data</div>
+							<div className="text-sky-500">Force push local data</div>
 							<div className="text-sm text-sky-500/80">Replace server data with the data in current browser.</div>
 						</button>
 					</PilledTableCell>
