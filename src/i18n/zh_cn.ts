@@ -64,6 +64,7 @@ const en = {
 		"PREFERENCE_CONNECTDIALOG_TEXTAREA_COPIED": "代码已复制",
 		"HOME_RECOVERDIALOG_CONNECTEDTOAST": "已连接至同步服务",
 		"HOME_RECOVERDIALOG_CANNOTCONNECTTOAST": "无法连接至同步服务，请确认连接信息是否正确，或网络是否正常。",
+		"HOME_ADDACCODIALOG_INVALIDQR": "无效的二维码",
 	}
 }
 

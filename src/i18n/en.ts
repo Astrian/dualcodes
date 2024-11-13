@@ -64,6 +64,7 @@ const en = {
 		"PREFERENCE_CONNECTDIALOG_TEXTAREA_COPIED": "The code has been copied to clipboard",
 		"HOME_RECOVERDIALOG_CONNECTEDTOAST": "Connected to syncing service",
 		"HOME_RECOVERDIALOG_CANNOTCONNECTTOAST": "Cannot connect to syncing service. Please check if the connection information is correct, or internet is available.",
+		"HOME_ADDACCODIALOG_INVALIDQR": "Invalid QR code",
 	}
 }
 

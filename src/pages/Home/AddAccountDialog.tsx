@@ -20,7 +20,11 @@ function AddAccountDialog(props: {
 		console.log(result[0].rawValue)
 
 		// beginning with otpauth://totp/
-		if (!result[0].rawValue.startsWith('otpauth://totp/')) return
+		if (!result[0].rawValue.startsWith('otpauth://totp/')) {
+			toast(t('HOME_ADDACCODIALOG_INVALIDQR'), {type: 'error'})
+			props.dismiss()
+			return
+		}
 
 		// extract the parameters
 		const paramsArray = result[0].rawValue.split('?')[1].split('&')
