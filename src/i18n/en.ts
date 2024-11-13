@@ -56,6 +56,10 @@ const en = {
 		"PREFERENCE_CONNECTDIALOG_TITLE": "Connect a new device",
 		"PREFERENCE_CONNECTDIALOG_GUIDE": "Open DualCodes on the new device, select “Sync my data from other devices”, then scan the QR code, or paste the following code.",
 		"PREFERENCE_CONNECTDIALOG_CLICKTOCOPY": "Click the code to copy",
+		"HOME_RECOVERDIALOG_TITLE": "Connect this device",
+		"HOME_RECOVERDIALOG_GUIDE": "Open DualCodes on your existing device, get connection QR code from Preferences, then align the QR code to the scanner or paste the code here.",
+		"HOME_RECOVERDIALOG_CODEPLACEHOLDER": "Paste the code here...",
+		"HOME_LOADING": "Loading..."
 	}
 }
 

@@ -56,6 +56,10 @@ const en = {
 		"PREFERENCE_CONNECTDIALOG_TITLE": "连接至新设备",
 		"PREFERENCE_CONNECTDIALOG_GUIDE": "在新设备上打开 DualCodes，选择「从其他设备同步」，然后扫描二维码，或粘贴以下代码。",
 		"PREFERENCE_CONNECTDIALOG_CLICKTOCOPY": "点击代码以复制",
+		"HOME_RECOVERDIALOG_TITLE": "连接此设备",
+		"HOME_RECOVERDIALOG_GUIDE": "在现有设备上打开 DualCodes，从偏好设置中获取连接二维码，然后将二维码对准扫描器或在此处粘贴代码。",
+		"HOME_RECOVERDIALOG_CODEPLACEHOLDER": "在此处粘贴代码...",
+		"HOME_LOADING": "加载中..."
 	}
 }
 

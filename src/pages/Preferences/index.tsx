@@ -18,7 +18,7 @@ function Preferences() {
 
 	const [syncing, setSyncing] = useState(false)
 	const [presentInitialSyncingDialog, setPresentInitialSyncingDialog] = useState(false)
-	const [presentQRCodeDialog, setPresentQRCodeDialog] = useState(true)
+	const [presentQRCodeDialog, setPresentQRCodeDialog] = useState(false)
 	const [fetchFromServerTimeStamp, setFetchFromServerTimeStamp] = useState(0)
 	const [updateToServerTimeStamp, setUpdateToServerTimeStamp] = useState(0)
 	const [syncId, setSyncId] = useState('')
