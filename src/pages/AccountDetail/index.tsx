@@ -2,13 +2,15 @@ import PilledTable from '../../components/PilledTable'
 import PilledTableCell from '../../components/PilledTableCell'
 import { useEffect, useState } from 'react'
 import Topbar from '../../components/Topbar'
+import Icon from '@mdi/react'
+import { mdiEye, mdiEyeOff } from '@mdi/js'
 
 function AccountDetail() {
 	const [account, setAccount] = useState({} as Account)
 	const [websiteField, setWebsiteField] = useState('')
 	const [nameField, setNameField] = useState('')
 	const [secretField, setSecretField] = useState('')
-	const [displaySecret, setDisplaySecret] = useState('')
+	const [displaySecret, setDisplaySecret] = useState(false)
 
 	useEffect(() => {
 		const id = window.location.pathname.split('/')[2]
@@ -43,9 +45,11 @@ function AccountDetail() {
 
 				<PilledTableCell>
 					<div className="font-semibold">2FA Secret</div>
-					<div>
-						<input type='text' className='w-full outline-none' placeholder='Awesome website' defaultValue={secretField} />
-						<button></button>
+					<div className='flex'>
+						<input type={displaySecret ? 'text' : 'password'} className='w-full outline-none' placeholder='Awesome website' defaultValue={secretField} />
+						<button onClick={() => setDisplaySecret(!displaySecret)}>
+							{displaySecret ? <Icon path={mdiEyeOff} size={1} /> : <Icon path={mdiEye} size={1} />}
+						</button>
 					</div>
 				</PilledTableCell>
 			</PilledTable>
