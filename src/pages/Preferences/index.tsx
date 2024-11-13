@@ -90,7 +90,7 @@ function Preferences() {
 							} catch (e) {}
 						}}>
 							<div className="text-sky-500">Force fetch from server</div>
-							<div className="text-sm text-sky-500/80">Will overwrite data on your current browser.</div>
+							<div className="text-sm text-sky-500/80">Fetch data from server and overwrite data on your current browser.</div>
 						</button>
 					</PilledTableCell>
 
