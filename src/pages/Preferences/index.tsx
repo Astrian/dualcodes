@@ -98,6 +98,13 @@ function Preferences() {
 		}
 	}
 
+	async function eraseAllData() {
+		if (!confirm(t('PREFERENCE_OTHERS_ERASE_CONFIRM'))) return
+
+		localStorage.clear()
+		window.location.replace('/')
+	}
+
 	return(<>
 		<section className='mx-3 lg:w-2/3 lg:mx-auto mt-4'>
 			<Topbar title={t('PREFERENCE_TITLE')} />
@@ -180,6 +187,15 @@ function Preferences() {
 							<div>{t('PREFERENCE_BACKUP_SECURITYTIP_BODY')}</div>
 						</div>
 					</PilledTableCell>
+			</PilledTable>
+
+			<PilledTable header={t('PREFERENCE_OTHERS_TITLE')}>
+				<PilledTableCell>
+					<button className="w-full text-left" onClick={eraseAllData}>
+						<div className="text-red-500">{t('PREFERENCE_OTHERS_ERASE_TITLE')}</div>
+						<div className="text-sm text-red-500/80">{t('PREFERENCE_OTHERS_ERASE_DESC')}</div>
+					</button>
+				</PilledTableCell>
 			</PilledTable>
 		</section>
 
