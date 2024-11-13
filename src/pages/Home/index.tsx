@@ -76,8 +76,8 @@ function App() {
 					<button onClick={() => setPresentMenu(!presentMenu)}><Icon path={mdiDotsVertical} size={1} /></button>
 					{ presentMenu && <div className='absolute top-16 z-10 bg-white dark:bg-slate-600 shadow-lg rounded-md border-[1px] border-gray-200 dark:border-slate-500 min-w-40 py-2'>
 						<ul>
-							<li className='px-4 py-2 hover:bg-slate-100 cursor-pointer' onClick={() => {setPresentMenu(false); setPresentAddAccountDialog(true)}}>{t('HOME_MENU_ADDACCOUNT')}</li>
-							<Link to="/preferences"><li className='px-4 py-2 hover:bg-slate-100 cursor-pointer'>{t('HOME_MENU_PREFERENCES')}</li></Link>
+							<li className='px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-500 cursor-pointer' onClick={() => {setPresentMenu(false); setPresentAddAccountDialog(true)}}>{t('HOME_MENU_ADDACCOUNT')}</li>
+							<Link to="/preferences"><li className='px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-500 cursor-pointer'>{t('HOME_MENU_PREFERENCES')}</li></Link>
 						</ul>
 					</div> }
 				</div>
