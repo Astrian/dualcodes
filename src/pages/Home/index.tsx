@@ -68,7 +68,7 @@ function App() {
 					))}
 					
 				</div> 
-				<div className='mt-4 text-center text-xl text-gray-500'>{accounts.length} accounts</div>
+				<div className='mt-4 text-center text-xl text-gray-500'>{t('HOME_ACCOUNTCOUNT', {count: accounts.length})}</div>
 			</>: <NoAccount addAccount={() => setPresentAddAccountDialog(true)} refreshList={reloadData} /> }
 			
 		</section>

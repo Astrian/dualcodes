@@ -8,6 +8,9 @@ const en = {
 		"HOME_EMPTYSCREEN_ADDACCOUNT_DESC": "This is my first time to use DualCodes",
 		"HOME_MENU_ADDACCOUNT": "Add an account",
 		"HOME_MENU_PREFERENCES": "Preferences",
+		"HOME_ACCOUNTCOUNT_zero": "No accounts",
+		"HOME_ACCOUNTCOUNT_one": "1 account",
+		"HOME_ACCOUNTCOUNT_other": "{{count}} accounts",
 	}
 }
 

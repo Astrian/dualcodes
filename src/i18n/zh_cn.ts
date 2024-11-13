@@ -8,6 +8,9 @@ const en = {
 		"HOME_EMPTYSCREEN_ADDACCOUNT_DESC": "这是我第一次使用 DualCodes",
 		"HOME_MENU_ADDACCOUNT": "添加帐户",
 		"HOME_MENU_PREFERENCES": "偏好设置",
+		"HOME_ACCOUNTCOUNT_zero": "没有帐户",
+		"HOME_ACCOUNTCOUNT_one": "一个帐户",
+		"HOME_ACCOUNTCOUNT_other": "{{count}} 个帐户",
 	}
 }
 
