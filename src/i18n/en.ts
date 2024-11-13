@@ -46,6 +46,13 @@ const en = {
 		"ACCOUNTDETAIL_OPSBTN_SAVE": "Save changes",
 		"ACCOUNTDETAIL_OPSBTN_DEL": "Delete account",
 		"ACCOUNTDETAIL_DELOPS_CONFIRM": "Your account will be deleted permanently and may no longer accessable across synced devices.",
+		"HOME_ADDACCODIALOG_TITLE": "Add new 2FA account",
+		"HOME_ADDACCODIALOG_MANUALLYBTN": "Enter manually",
+		"HOME_ADDACCODIALOG_MANUALLYFIELD_WEBSITE": "Website",
+		"HOME_ADDACCODIALOG_MANUALLYFIELD_WEBSITE_PLACEHOLDER": "Phasebrook",
+		"HOME_ADDACCODIALOG_MANUALLYFIELD_ACOUNT": "Account name",
+		"HOME_ADDACCODIALOG_MANUALLYFIELD_ACOUNT_PLACEHOLDER": "John Doe",
+		"HOME_ADDACCODIALOG_MANUALLYFIELD_2FASECRET": "2FA secret",
 	}
 }
 

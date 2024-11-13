@@ -4,11 +4,14 @@ import { mdiClose, mdiQrcodeScan } from '@mdi/js'
 import { useState } from 'react'
 import { Scanner } from '@yudiel/react-qr-scanner'
 import syncToServer from '../../utils/syncToServer'
+import { useTranslation } from 'react-i18next'
 
 function AddAccountDialog(props: {
 	dismiss: () => void,
 	refreshList: () => void
 }) {
+	const { t } = useTranslation()
+
 	const [mode, setMode] = useState(0)
 
 	async function qrCodeEvent(result: {rawValue: string}[]) {
@@ -79,28 +82,30 @@ function AddAccountDialog(props: {
 			<div className='mx-3 lg:w-2/4 lg:mx-auto h-full flex justify-center items-center'>
 				<div className='w-full border-[1px] border-gray-300 rounded-md'>
 					<div className='bg-slate-300 rounded-t-md p-2 flex justify-between'>
-						<div className='font-bold text-xl'>Add new 2FA account</div>
+						<div className='font-bold text-xl'>{t('HOME_ADDACCODIALOG_TITLE')}</div>
 						<button onClick={props.dismiss}><Icon path={mdiClose} size={1} /></button>
 					</div>
 					<div className='bg-white p-2 rounded-b-md'>
 						{ mode === 0 && <div className='flex flex-col gap-4 items-center'>
-							<Scanner onScan={result => qrCodeEvent(result)} />
+							<div className='max-w-96'>
+								<Scanner onScan={result => qrCodeEvent(result)} />
+							</div>
 							<div>
-								<button onClick={() => setMode(1)} className='bg-sky-500 text-white px-4 py-2 rounded-md border-[1px] border-sky-600 active:shadow-inner active:bg-sky-600'>Enter manually</button>
+								<button onClick={() => setMode(1)} className='bg-sky-500 text-white px-4 py-2 rounded-md border-[1px] border-sky-600 active:shadow-inner active:bg-sky-600'>{t('HOME_ADDACCODIALOG_MANUALLYBTN')}</button>
 							</div>
 						</div>}
 
 						{ mode === 1 && <form className='flex flex-col' onSubmit={addAccountMannual}>
 							<div className='flex border-b-[1px] border-gray-200 py-2'>
-								<div className='font-bold'>Website</div>
-								<input placeholder="Awsome website" className='outline-none text-right flex-1' required />
+								<div className='font-bold'>{t('HOME_ADDACCODIALOG_MANUALLYFIELD_WEBSITE')}</div>
+								<input placeholder={t('HOME_ADDACCODIALOG_MANUALLYFIELD_WEBSITE_PLACEHOLDER')} className='outline-none text-right flex-1' required />
 							</div>
 							<div className='flex border-b-[1px] border-gray-200 py-2'>
-								<div className='font-bold'>Account</div>
-								<input placeholder="John Appleseed" className='outline-none text-right flex-1' required />
+								<div className='font-bold'>{t('HOME_ADDACCODIALOG_MANUALLYFIELD_ACOUNT')}</div>
+								<input placeholder={t('HOME_ADDACCODIALOG_MANUALLYFIELD_ACOUNT_PLACEHOLDER')} className='outline-none text-right flex-1' required />
 							</div>
 							<div className='flex border-b-[1px] border-gray-200 py-2'>
-								<div className='font-bold'>2FA secret</div>
+								<div className='font-bold'>{t('HOME_ADDACCODIALOG_MANUALLYFIELD_2FASECRET')}</div>
 								<input placeholder="ABCD 1234 ..." className='outline-none text-right flex-1' required />
 							</div>
 							<div className='flex py-2 justify-between'>
