@@ -73,7 +73,7 @@ function RecoverSyncingDialog(props: {
 						<div className='font-bold text-xl'>{t('HOME_RECOVERDIALOG_TITLE')}</div>
 						<button onClick={props.dismiss}><Icon path={mdiClose} size={1} /></button>
 					</div>
-					<div className='bg-white p-2 rounded-b-md flex gap-4 items-center justify-center text-center'>
+					<div className='bg-white p-2 rounded-b-md flex lg:flex-row flex-col gap-4 items-center justify-center text-center'>
 						<div className='max-w-60'>
 							<Scanner onScan={result => qrCodeEvent(result)} />
 						</div>

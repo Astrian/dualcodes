@@ -28,7 +28,7 @@ function ConnectQRCodeDialog(props: {
 						<div className='font-bold text-xl'>{t('PREFERENCE_CONNECTDIALOG_TITLE')}</div>
 						<button onClick={props.dismiss}><Icon path={mdiClose} size={1} /></button>
 					</div>
-					<div className='bg-white p-2 rounded-b-md flex gap-4'>
+					<div className='bg-white p-2 rounded-b-md flex flex-col lg:flex-row items-center gap-4'>
 						<div>
 							<QRCode value={qrCode} />
 						</div>

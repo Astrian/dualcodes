@@ -42,6 +42,7 @@ function App() {
 
 		setAccounts(tfaAccounts)
 		if (tfaAccounts.length === 0) setAccountsNotExists(true)
+		else setAccountsNotExists(false)
 	}
 
 	async function keywordFind(e: React.ChangeEvent<HTMLInputElement>) {
