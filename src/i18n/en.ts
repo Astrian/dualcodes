@@ -53,6 +53,9 @@ const en = {
 		"HOME_ADDACCODIALOG_MANUALLYFIELD_ACOUNT": "Account name",
 		"HOME_ADDACCODIALOG_MANUALLYFIELD_ACOUNT_PLACEHOLDER": "John Doe",
 		"HOME_ADDACCODIALOG_MANUALLYFIELD_2FASECRET": "2FA secret",
+		"PREFERENCE_CONNECTDIALOG_TITLE": "Connect a new device",
+		"PREFERENCE_CONNECTDIALOG_GUIDE": "Open DualCodes on the new device, select “Sync my data from other devices”, then scan the QR code, or paste the following code.",
+		"PREFERENCE_CONNECTDIALOG_CLICKTOCOPY": "Click the code to copy",
 	}
 }
 
