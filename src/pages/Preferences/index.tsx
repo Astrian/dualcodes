@@ -89,6 +89,11 @@ function Preferences() {
 			// import data
 			localStorage.setItem('tfa_accounts', JSON.stringify(json.accounts))
 			localStorage.setItem('tfa_tags', JSON.stringify(json.tags))
+
+			// remove sync config
+			localStorage.removeItem('tfa_sync')
+			localStorage.removeItem('tfa_synctime')
+
 			alert('Imported')
 		}
 	}
