@@ -12,6 +12,7 @@ function App() {
 	const [accounts, setAccounts] = useState([] as Account[])
 	const [presentAddAccountDialog, setPresentAddAccountDialog] = useState(false)
 	const [presentMenu, setPresentMenu] = useState(false)
+	const [accountsNotExists, setAccountsNotExists] = useState(false)
 
 	const { t } = useTranslation()
 
@@ -38,6 +39,20 @@ function App() {
 		else localStorage.setItem('tfa_tags', JSON.stringify(tags))
 
 		setAccounts(tfaAccounts)
+		if (tfaAccounts.length === 0) setAccountsNotExists(true)
+	}
+
+	async function keywordFind(e: React.ChangeEvent<HTMLInputElement>) {
+		const keyword = e.target.value
+		if (keyword === '') {
+			loadFromLocalStorage()
+			return
+		}
+		const tfaAccountsLS = localStorage.getItem('tfa_accounts')
+		if (!tfaAccountsLS) return
+		const tfaAccounts = JSON.parse(tfaAccountsLS) as Account[]
+		const filteredAccounts = tfaAccounts.filter(account => account.name.includes(keyword) || account.website.includes(keyword))
+		setAccounts(filteredAccounts)
 	}
 
 	useEffect(() => {
@@ -47,7 +62,7 @@ function App() {
 		<section className='mx-3 lg:w-2/3 lg:mx-auto'>
 			<div className='flex gap-2'>
 				<div className='w-full my-4 shadow-md bg-white dark:bg-slate-600 border-[1px] dark:border-slate-500 rounded-full px-4 py-2'>
-					<input placeholder={t('HOME_SEARCHBAR_PLACEHOLDER')} className='outline-none w-full dark:bg-slate-600' />
+					<input placeholder={t('HOME_SEARCHBAR_PLACEHOLDER')} className='outline-none w-full dark:bg-slate-600' onChange={keywordFind} />
 				</div>
 				<div className='flex items-center justify-end'>
 					<button onClick={() => setPresentMenu(!presentMenu)}><Icon path={mdiDotsVertical} size={1} /></button>
@@ -59,7 +74,7 @@ function App() {
 					</div> }
 				</div>
 			</div>
-			{ accounts.length > 0 ?<>
+			{ accountsNotExists ? <NoAccount addAccount={() => setPresentAddAccountDialog(true)} refreshList={reloadData} />: <>
 				<div className='lg:columns-4 lg:gap-2 columns-1'>
 					{accounts.map((account) => (
 						<div key={account.id} className='break-inside-avoid mb-2'>
@@ -69,7 +84,7 @@ function App() {
 					
 				</div> 
 				<div className='mt-4 text-center text-xl text-gray-500'>{t('HOME_ACCOUNTCOUNT', {count: accounts.length})}</div>
-			</>: <NoAccount addAccount={() => setPresentAddAccountDialog(true)} refreshList={reloadData} /> }
+			</> }
 			
 		</section>
 
