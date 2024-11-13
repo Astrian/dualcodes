@@ -39,6 +39,13 @@ const en = {
 		"PREFERENCE_OTHERS_ERASE_TITLE": "抹掉所有数据和偏好设置",
 		"PREFERENCE_OTHERS_ERASE_DESC": "删除所有数据和偏好设置，包括帐户、同步配置等。",
 		"PREFERENCE_OTHERS_ERASE_CONFIRM": "你确定要删除所有数据和偏好设置吗？此操作不可逆。",
+		"ACCOUNTDETAIL_TITLE": "帐户详情",
+		"ACCOUNTDETAIL_FIELDS_WEBSITE_TITLE": "网站",
+		"ACCOUNTDETAIL_FIELDS_NAME_TITLE": "帐户名称",
+		"ACCOUNTDETAIL_FIELDS_2FASECRECT_TITLE": "双因素验证密钥",
+		"ACCOUNTDETAIL_OPSBTN_SAVE": "保存更改",
+		"ACCOUNTDETAIL_OPSBTN_DEL": "删除帐户",
+		"ACCOUNTDETAIL_DELOPS_CONFIRM": "你的帐户将被永久删除，可能无法在同步设备上访问。",
 	}
 }
 

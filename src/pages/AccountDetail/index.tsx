@@ -5,8 +5,11 @@ import Topbar from '../../components/Topbar'
 import Icon from '@mdi/react'
 import { mdiEye, mdiEyeOff } from '@mdi/js'
 import syncToServer from '../../utils/syncToServer'
+import { useTranslation } from 'react-i18next'
 
 function AccountDetail() {
+	const {t} = useTranslation()
+
 	const [websiteField, setWebsiteField] = useState('')
 	const [nameField, setNameField] = useState('')
 	const [secretField, setSecretField] = useState('')
@@ -44,7 +47,7 @@ function AccountDetail() {
 	}
 
 	async function deleteAccount() {
-		if (!confirm('Your account will no longer accessable, and may be removed from all your synced devices.')) return
+		if (!confirm(t('ACCOUNTDETAIL_DELOPS_CONFIRM'))) return
 		const accountsLS = localStorage.getItem('tfa_accounts')
 		if (!accountsLS) return
 		const accounts = JSON.parse(accountsLS) as Account[]
@@ -56,25 +59,25 @@ function AccountDetail() {
 
 	return (<>
 		<section className='mx-3 lg:w-2/3 lg:mx-auto'>
-			<Topbar title='Account Detail' />
+			<Topbar title={t('ACCOUNTDETAIL_TITLE')} />
 
-			<PilledTable header='Account information'>
+			<PilledTable>
 				<PilledTableCell>
-					<div className="font-semibold">Website</div>
+					<div className="font-semibold">{t('ACCOUNTDETAIL_FIELDS_WEBSITE_TITLE')}</div>
 					<div>
 						<input type='text' className='w-full outline-none bg-transparent' placeholder='Awesome website' defaultValue={websiteField} />
 					</div>
 				</PilledTableCell>
 
 				<PilledTableCell>
-					<div className="font-semibold">Account Name</div>
+					<div className="font-semibold">{t('ACCOUNTDETAIL_FIELDS_NAME_TITLE')}</div>
 					<div>
 						<input type='text' className='w-full outline-none bg-transparent' placeholder='John Appleseed' defaultValue={nameField} />
 					</div>
 				</PilledTableCell>
 
 				<PilledTableCell>
-					<div className="font-semibold">2FA Secret</div>
+					<div className="font-semibold">{t('ACCOUNTDETAIL_FIELDS_2FASECRECT_TITLE')}</div>
 					<div className='flex'>
 						<input type={displaySecret ? 'text' : 'password'} className='w-full outline-none bg-transparent' placeholder='Awesome website' defaultValue={secretField} />
 						<button onClick={() => setDisplaySecret(!displaySecret)}>
@@ -86,10 +89,10 @@ function AccountDetail() {
 
 			<PilledTable>
 				<PilledTableCell>
-					<button className='text-sky-500 w-full text-left dark:text-sky-300' onClick={savechanges}>Save changes</button>
+					<button className='text-sky-500 w-full text-left dark:text-sky-300' onClick={savechanges}>{t('ACCOUNTDETAIL_OPSBTN_SAVE')}</button>
 				</PilledTableCell>
 				<PilledTableCell>
-					<button className='text-red-500 w-full text-left dark:text-red-400' onClick={deleteAccount}>Delete account</button>
+					<button className='text-red-500 w-full text-left dark:text-red-400' onClick={deleteAccount}>{t('ACCOUNTDETAIL_OPSBTN_DEL')}</button>
 				</PilledTableCell>
 			</PilledTable>
 		</section>

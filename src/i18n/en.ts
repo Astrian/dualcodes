@@ -39,6 +39,13 @@ const en = {
 		"PREFERENCE_OTHERS_ERASE_TITLE": "Erase all data and preferences",
 		"PREFERENCE_OTHERS_ERASE_DESC": "Delete all data and preferences, including accounts, sync configurations, etc.",
 		"PREFERENCE_OTHERS_ERASE_CONFIRM": "Are you sure to delete all data and preferences? This operation is irreversible.",
+		"ACCOUNTDETAIL_TITLE": "Account Detail",
+		"ACCOUNTDETAIL_FIELDS_WEBSITE_TITLE": "Website",
+		"ACCOUNTDETAIL_FIELDS_NAME_TITLE": "Account Name",
+		"ACCOUNTDETAIL_FIELDS_2FASECRECT_TITLE": "2FA Secret",
+		"ACCOUNTDETAIL_OPSBTN_SAVE": "Save changes",
+		"ACCOUNTDETAIL_OPSBTN_DEL": "Delete account",
+		"ACCOUNTDETAIL_DELOPS_CONFIRM": "Your account will be deleted permanently and may no longer accessable across synced devices.",
 	}
 }
 
