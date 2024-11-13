@@ -10,12 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.1",
     "@mdi/js": "^7.4.47",
     "@mdi/react": "^1.6.1",
     "@yudiel/react-qr-scanner": "^2.0.8",
     "axios": "^1.7.7",
     "cron": "^3.2.0",
     "dayjs": "^1.11.13",
+    "gsap": "^3.12.5",
     "i18next": "^23.16.5",
     "i18next-browser-languagedetector": "^8.0.0",
     "otpauth": "^9.3.4",
