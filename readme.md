@@ -14,4 +14,24 @@ DualCodes is a 2-factor authenticator app for people with advanced account secur
 - **Offline friendly.** You can launch DualCodes without a network once you launch it on your browser.
 
 ## How to Deploy DualCodes?
-TBA
+It’s really easy to deploy DualCodes with Docker Compose.
+
+```yaml
+version: '3'
+services:
+  dualcodes:
+    image: astrian/dualcodes:latest
+    environment:
+ - CALL_PWD=<your-syncing-password>
+    ports:
+ - 9999:80
+    volumes:
+ - ./app:/opt/app/packages/backend/db
+    working_dir: /opt/app/packages/backend/db
+```
+
+## Contribute to DualCodes
+DualCodes is currently in an active development sequence, so please monitor the data backup. You can also contribute to DualCodes by fork, modify codes, and create a pull request for us!
+
+## License
+MIT
