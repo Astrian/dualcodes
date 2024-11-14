@@ -1,0 +1,6 @@
+{
+  "env": {
+    "DEBUG": "@lsby:*,dualcodes-service:*",
+    "ENV_FILE_PATH": "./.env/.env.test"
+  }
+}

@@ -1,0 +1,44 @@
+# 忽略 node_modules，通常不需要把它们打包进镜像
+node_modules
+npm-debug.log
+yarn-error.log
+
+# 忽略日志文件
+logs
+*.log
+
+# 忽略 Dockerfile 和 .dockerignore 本身
+docker
+/docker
+/docker/**/*
+dockerfile
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# 忽略环境配置文件
+.env
+*.env
+
+# 忽略 Git 相关的文件
+.git
+.gitignore
+.gitattributes
+
+# 忽略本地开发配置文件（如 editorconfig、VSCode 工作区等）
+.vscode
+.idea
+*.swp
+*.swo
+
+# 忽略操作系统生成的临时文件
+.DS_Store
+Thumbs.db
+
+# 忽略编译和缓存文件
+build
+dist
+coverage
+.cache
+
+*.db

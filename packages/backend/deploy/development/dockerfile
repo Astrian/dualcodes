@@ -1,0 +1,8 @@
+FROM node:22
+
+COPY . /opt/app
+WORKDIR /opt/app
+
+RUN corepack enable && pnpm i
+
+CMD npm run db:push:dev && npm run _build:all && npm run run:service:dev

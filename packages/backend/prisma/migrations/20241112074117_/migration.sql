@@ -1,0 +1,19 @@
+-- CreateTable
+CREATE TABLE "user" (
+    "id" TEXT NOT NULL PRIMARY KEY,
+    "created_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "name" TEXT NOT NULL,
+    "pwd" TEXT NOT NULL
+);
+
+-- CreateTable
+CREATE TABLE "data" (
+    "id" TEXT NOT NULL PRIMARY KEY,
+    "created_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "data" TEXT NOT NULL
+);
+
+-- CreateIndex
+CREATE UNIQUE INDEX "user_name_key" ON "user"("name");

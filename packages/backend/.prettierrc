@@ -1,0 +1,9 @@
+{
+  "printWidth": 120,
+  "trailingComma": "all",
+  "semi": false,
+  "endOfLine": "auto",
+  "singleQuote": true,
+  "plugins": ["prettier-plugin-packagejson", "@ianvs/prettier-plugin-sort-imports", "prettier-plugin-organize-imports"],
+  "importOrder": ["<BUILTIN_MODULES>", "<THIRD_PARTY_MODULES>", "^@([^/]+?)/(.*)$", "^[./]"]
+}

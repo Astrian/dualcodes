@@ -1,0 +1,84 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "_持续生成接口类型",
+      "type": "npm",
+      "script": "watch:gen:type",
+      "problemMatcher": [
+        {
+          "pattern": {
+            "kind": "file",
+            "regexp": "(错误: .*)",
+            "file": 1,
+            "message": 1
+          },
+          "background": {
+            "activeOnStart": true,
+            "beginsPattern": "^========生成开始========$",
+            "endsPattern": "^========生成结束========$"
+          }
+        }
+      ],
+      "isBackground": true,
+      "presentation": { "reveal": "never" },
+      "group": { "kind": "build", "isDefault": true }
+    },
+    {
+      "label": "_持续生成接口列表",
+      "type": "npm",
+      "script": "watch:gen:list",
+      "problemMatcher": [
+        {
+          "pattern": {
+            "kind": "file",
+            "regexp": "(错误: .*)",
+            "file": 1,
+            "message": 1
+          },
+          "background": {
+            "activeOnStart": true,
+            "beginsPattern": "^========生成开始========$",
+            "endsPattern": "^========生成结束========$"
+          }
+        }
+      ],
+      "isBackground": true,
+      "presentation": { "reveal": "never" },
+      "group": { "kind": "build", "isDefault": true }
+    },
+     {
+      "label": "_持续类型检查",
+      "type": "npm",
+      "script": "watch:check:type",
+      "problemMatcher": [
+        "$tsc-watch"
+      ],
+      "isBackground": true,
+      "presentation": { "reveal": "never" },
+      "group": { "kind": "build", "isDefault": true }
+    },
+    {
+      "label": "_运行后端",
+      "type": "npm",
+      "script": "run:service:dev",
+      "isBackground": true,
+      "presentation": { "reveal": "never" },
+      "group": { "kind": "build", "isDefault": true }
+    },
+    {
+      "label": "_运行前端",
+      "type": "npm",
+      "script": "run:web:dev",
+      "isBackground": true,
+      "presentation": { "reveal": "never" },
+      "group": { "kind": "build", "isDefault": true }
+    },
+    {
+      "label": "运行全部",
+      "dependsOrder": "parallel",
+      "dependsOn": ["_持续类型检查", "_持续生成接口类型", "_持续生成接口列表", "_运行后端", "_运行前端"],
+      "problemMatcher": []
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+version: "3"
+services:
+  app:
+    build:
+      context: ../../
+      dockerfile: ./docker/development/dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+      - ./dualcodes-db:/opt/app/db
+    env_file:
+      - ../../packages/backend/.env/.env.development
+    restart: always

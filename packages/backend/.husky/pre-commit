@@ -1,0 +1,2 @@
+npm run _gen:all
+npm run _check:all

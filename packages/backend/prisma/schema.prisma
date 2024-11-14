@@ -1,0 +1,37 @@
+datasource db {
+  // sqlite
+  provider = "sqlite"
+  url      = env("DATABASE_PATH_PRISMA")
+
+  // pg
+  // provider          = "postgresql"
+  // url               = env("DATABASE_URL")
+  // shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+generator kysely {
+  provider = "prisma-kysely"
+  output   = "../src/types"
+  fileName = "db.ts"
+}
+
+// =================================================
+
+// 用户表
+model user {
+  id         String   @id
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now()) @updatedAt
+
+  name String @unique // 用户名
+  pwd  String // 密码
+}
+
+// 数据表
+model data {
+  id         String   @id
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now()) @updatedAt
+
+  data String
+}

@@ -1,0 +1,57 @@
+# 忽略 node_modules 目录
+node_modules/
+
+# 忽略所有日志文件
+*.log
+
+# 忽略构建输出目录
+dist/
+build/
+
+# 忽略环境变量文件
+.env
+.env.local
+.env.*.local
+
+# 忽略锁文件
+pnpm-lock.yaml
+yarn.lock
+package-lock.json
+
+# 忽略 IDE 配置文件
+.vscode/
+.idea/
+
+# 忽略临时文件
+*.tmp
+*.temp
+
+# 忽略特定文件类型
+*.min.js
+*.min.css
+
+# 忽略特定文件
+pnpm-lock.yaml
+
+# 忽略图片和其他媒体文件
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+
+# 忽略压缩文件
+*.zip
+*.tar.gz
+*.rar
+
+# 忽略文档
+*.pdf
+*.docx
+*.xlsx
+
+# 忽略生成的文件
+/src/types/db.ts
+/src/types/interface-type.ts
+/src/interface/interface-list.ts
+/test/unit-test.test.ts
