@@ -1,0 +1,11 @@
+FROM node:22
+
+COPY . /opt/app
+WORKDIR /opt/app
+
+RUN corepack enable && cd /opt/app/ && pnpm i && \
+    cd /opt/app/packages/frontend && npm run build && \
+    cd /opt/app/packages/backend && npm run _build:all && \
+    rm -rf /opt/app/packages/backend/dist/web/* && cp -r /opt/app/packages/frontend/dist/* /opt/app/packages/backend/dist/web
+
+CMD cd /opt/app/packages/backend && npm run db:push:prod && npm run run:service:prod

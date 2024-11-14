@@ -1,0 +1,13 @@
+version: "3"
+services:
+  app:
+    build:
+      context: ../../
+      dockerfile: ./docker/production/dockerfile
+    ports:
+      - 80:80
+    volumes:
+      - ./dualcodes-db:/opt/app/packages/backend/db
+    environment:
+      - CALL_PWD=123456
+    restart: always
