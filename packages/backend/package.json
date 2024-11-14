@@ -50,10 +50,8 @@
     "axios": "^1.7.7",
     "better-sqlite3": "^11.3.0",
     "kysely": "^0.27.4",
-    "node-watch": "^0.7.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "stream-to-blob": "^2.0.1",
     "zod": "^3.23.8"
   },
   "devDependencies": {
@@ -78,6 +76,7 @@
     "eslint-plugin-sort-class-members": "^1.20.0",
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
+    "node-watch": "^0.7.4",
     "open-cli": "^8.0.0",
     "postcss": "^8.4.47",
     "prettier": "3.3.3",
@@ -85,6 +84,7 @@
     "prettier-plugin-packagejson": "^2.5.2",
     "prisma": "^5.19.1",
     "prisma-kysely": "^1.8.0",
+    "stream-to-blob": "^2.0.1",
     "tailwindcss": "^3.4.13",
     "ts-to-zod": "^3.13.0",
     "tsx": "^4.19.1",
