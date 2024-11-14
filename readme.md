@@ -30,6 +30,8 @@ services:
     working_dir: /opt/app/packages/backend/db
 ```
 
+After Docker prompts that the project has already launched, reverse proxy the port `9999` (or your custom port) to your domain and 443 port. We recommended configuring HTTPS for DualCodes so it can use your device’s camera to scan QR codes and improve security.
+
 ## Contribute to DualCodes
 DualCodes is currently in an active development sequence, so please monitor the data backup. You can also contribute to DualCodes by fork, modify codes, and create a pull request for us!
 
