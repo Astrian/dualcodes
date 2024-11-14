@@ -12,6 +12,16 @@ import LanguageDetector from 'i18next-browser-languagedetector'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').then(registration => {
+      console.log('SW registered:', registration);
+    }).catch(error => {
+      console.log('SW registration failed:', error);
+    });
+  });
+}
+
 i18n.use(initReactI18next).use(LanguageDetector).init({
 	resources,
   fallbackLng: "en",
