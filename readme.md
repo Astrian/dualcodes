@@ -22,11 +22,11 @@ services:
   dualcodes:
     image: astrian/dualcodes:latest
     environment:
- - CALL_PWD=<your-syncing-password>
+			- CALL_PWD=<your-syncing-password>
     ports:
- - 9999:80
+			- 9999:80
     volumes:
- - ./app:/opt/app/packages/backend/db
+			- ./app:/opt/app/packages/backend/db
     working_dir: /opt/app/packages/backend/db
 ```
 
