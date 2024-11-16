@@ -49,7 +49,7 @@ function AccountDetail() {
 			localStorage.setItem('tfa_accounts', JSON.stringify(accounts))
 			syncToServer()
 			toast(t('ACCOUNTDETAIL_SAVEOPS_SUCCESS'), {type: 'success'})
-			// window.history.back()
+			window.history.back()
 			break
 		}
 	}
