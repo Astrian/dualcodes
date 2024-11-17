@@ -150,27 +150,30 @@ function AccountCard(props: { account: Account }) {
 	return (<>
 		<div className='border-[1px] border-gray-200 dark:border-slate-600 shadow-md rounded-md p-2 select-none bg-white dark:bg-slate-600 flex items-center lg:items-start'>
 			<div className='flex flex-row-reverse justify-between items-center lg:flex-col lg:items-start flex-1'>
-				<div className='text-4xl cursor-pointer ' onClick={copyOTP}>
-					<span className='relative' ref={otpDigi1Ref}>{otp.split('')[0]}</span>
-					<span className='relative' ref={otpDigi2Ref}>{otp.split('')[1]}</span>
-					<span className='relative' ref={otpDigi3Ref}>{otp.split('')[2]}</span>
-					<span className='relative' ref={otpDigi4Ref}>{otp.split('')[3]}</span>
-					<span className='relative' ref={otpDigi5Ref}>{otp.split('')[4]}</span>
-					<span className='relative' ref={otpDigi6Ref}>{otp.split('')[5]}</span>
+				<div className='flex lg:w-full lg:justify-between'>
+					<div className='text-4xl cursor-pointer ' onClick={copyOTP}>
+						<span className='relative' ref={otpDigi1Ref}>{otp.split('')[0]}</span>
+						<span className='relative' ref={otpDigi2Ref}>{otp.split('')[1]}</span>
+						<span className='relative' ref={otpDigi3Ref}>{otp.split('')[2]}</span>
+						<span className='relative' ref={otpDigi4Ref}>{otp.split('')[3]}</span>
+						<span className='relative' ref={otpDigi5Ref}>{otp.split('')[4]}</span>
+						<span className='relative' ref={otpDigi6Ref}>{otp.split('')[5]}</span>
+					</div>
+					<div>
+						<Link to={`/accounts/${props.account.id}`} className='min-w-6'>
+							<button className='min-w-6'>
+								<Icon path={mdiDotsVertical} size={1} />
+							</button>
+						</Link>
+					</div>
 				</div>
-				<div className='flex flex-col w-36 lg:w-full'>
+				<div className='flex flex-col w-48'>
 					<div className='text-xl text-ellipsis truncate'>{props.account.website}</div>
-					<div className='text-gray-400 text-sm text-ellipsis w-full truncate'>{props.account.name}</div>
+					{ props.account.name !== "" ?<div className='text-gray-400 text-sm text-ellipsis w-full truncate'>{props.account.name}</div> : <div className='text-gray-400 text-sm text-ellipsis w-full truncate italic'>{t('HOME_ACCOUNTCARD_NONAME')}</div> }
 				</div>
 				
 			</div>
-			<div>
-				<Link to={`/accounts/${props.account.id}`} className='min-w-6'>
-					<button className='min-w-6'>
-						<Icon path={mdiDotsVertical} size={1} />
-					</button>
-				</Link>
-			</div>
+			
 		</div>
 	</>)
 }

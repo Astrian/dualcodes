@@ -45,6 +45,7 @@ function AccountDetail() {
 				name: nameField,
 				secret: secretField
 			}
+			console.log(newAccountInfo)
 			accounts[i] = newAccountInfo
 			localStorage.setItem('tfa_accounts', JSON.stringify(accounts))
 			syncToServer()

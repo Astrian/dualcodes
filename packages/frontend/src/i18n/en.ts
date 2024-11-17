@@ -69,6 +69,7 @@ const en = {
 		"ACCOUNTDETAIL_DELOPS_SUCCESS": "Account deleted",
 		"HOME_COPYTIP": "Click the 2FA code to copy it",
 		"HOME_ACCOCARD_COPIED": "2FA code for “{{account}}” is copied",
+		"HOME_ACCOUNTCARD_NONAME": "No account name",
 	}
 }
 

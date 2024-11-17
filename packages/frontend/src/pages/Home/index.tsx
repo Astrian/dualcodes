@@ -18,6 +18,7 @@ function App() {
 	const { t } = useTranslation()
 
 	async function reloadData() {
+		loadFromLocalStorage()
 		try {
 			await loadFromServer()
 		} catch (e) {
@@ -84,7 +85,7 @@ function App() {
 				</div>
 			</div>
 			{ accountsNotExists ? <NoAccount addAccount={() => setPresentAddAccountDialog(true)} refreshList={reloadData} />: <>
-				<div className='lg:columns-4 lg:gap-2 columns-1'>
+				<div className='lg:columns-3 lg:gap-2 columns-1'>
 					{accounts.map((account) => (
 						<div key={account.id} className='break-inside-avoid mb-2'>
 							<AccountCard account={account} />
