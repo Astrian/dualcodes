@@ -93,7 +93,7 @@ function App() {
 					
 				</div> 
 				<div className='mt-4 text-center text-xl text-gray-500'>{t('HOME_ACCOUNTCOUNT', {count: accounts.length})}</div>
-				<div className='text-center text-gray-500'>{t('HOME_COPYTIP')}</div>
+				<div className='text-center text-gray-500 mb-4'>{t('HOME_COPYTIP')}</div>
 			</> }
 			
 		</section>
