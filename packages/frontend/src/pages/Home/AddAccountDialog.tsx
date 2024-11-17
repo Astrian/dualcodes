@@ -87,37 +87,37 @@ function AddAccountDialog(props: {
 	return (<>
 		<div className='z-20 fixed top-0 left-0 w-full h-full bg-black/40'>
 			<div className='mx-3 lg:w-2/4 lg:mx-auto h-full flex justify-center items-center'>
-				<div className='w-full border-[1px] border-gray-300 rounded-md'>
-					<div className='bg-slate-300 rounded-t-md p-2 flex justify-between'>
+				<div className='w-full border-[1px] border-gray-300 dark:border-gray-600 rounded-md'>
+					<div className='bg-slate-300 dark:bg-slate-700 rounded-t-md p-2 flex justify-between'>
 						<div className='font-bold text-xl'>{t('HOME_ADDACCODIALOG_TITLE')}</div>
 						<button onClick={props.dismiss}><Icon path={mdiClose} size={1} /></button>
 					</div>
-					<div className='bg-white p-2 rounded-b-md'>
+					<div className='bg-white dark:bg-slate-800 p-2 rounded-b-md'>
 						{ mode === 0 && <div className='flex flex-col gap-4 items-center'>
 							<div className='max-w-96'>
 								<Scanner onScan={result => qrCodeEvent(result)} />
 							</div>
 							<div>
-								<button onClick={() => setMode(1)} className='bg-sky-500 text-white px-4 py-2 rounded-md border-[1px] border-sky-600 active:shadow-inner active:bg-sky-600'>{t('HOME_ADDACCODIALOG_MANUALLYBTN')}</button>
+								<button onClick={() => setMode(1)} className='bg-sky-500 dark:bg-sky-800 border-[1px] border-sky-600 dark:border-sky-700 text-white px-2 py-1 rounded-md active:shadow-inner active:bg-sky-600 dark:active:bg-sky-900 disabled:opacity-50 disabled:cursor-not-allowed'>{t('HOME_ADDACCODIALOG_MANUALLYBTN')}</button>
 							</div>
 						</div>}
 
 						{ mode === 1 && <form className='flex flex-col' onSubmit={addAccountMannual}>
-							<div className='flex border-b-[1px] border-gray-200 py-2'>
+							<div className='flex border-b-[1px] border-gray-200 dark:border-gray-600 py-2'>
 								<div className='font-bold'>{t('HOME_ADDACCODIALOG_MANUALLYFIELD_WEBSITE')}</div>
-								<input placeholder={t('HOME_ADDACCODIALOG_MANUALLYFIELD_WEBSITE_PLACEHOLDER')} className='outline-none text-right flex-1' required />
+								<input placeholder={t('HOME_ADDACCODIALOG_MANUALLYFIELD_WEBSITE_PLACEHOLDER')} className='outline-none text-right flex-1 bg-transparent' required />
 							</div>
-							<div className='flex border-b-[1px] border-gray-200 py-2'>
+							<div className='flex border-b-[1px] border-gray-200 dark:border-gray-600 py-2'>
 								<div className='font-bold'>{t('HOME_ADDACCODIALOG_MANUALLYFIELD_ACOUNT')}</div>
-								<input placeholder={t('HOME_ADDACCODIALOG_MANUALLYFIELD_ACOUNT_PLACEHOLDER')} className='outline-none text-right flex-1' required />
+								<input placeholder={t('HOME_ADDACCODIALOG_MANUALLYFIELD_ACOUNT_PLACEHOLDER')} className='outline-none text-right flex-1 bg-transparent' required />
 							</div>
-							<div className='flex border-b-[1px] border-gray-200 py-2'>
+							<div className='flex border-b-[1px] border-gray-200 dark:border-gray-600 py-2'>
 								<div className='font-bold'>{t('HOME_ADDACCODIALOG_MANUALLYFIELD_2FASECRET')}</div>
-								<input placeholder="ABCD 1234 ..." className='outline-none text-right flex-1' required />
+								<input placeholder="ABCD 1234 ..." className='outline-none text-right flex-1 bg-transparent' required />
 							</div>
 							<div className='flex py-2 justify-between'>
-								<button onClick={() => setMode(0)} className='bg-slate-200 px-4 py-2 rounded-md border-[1px] border-slate-300 active:shadow-inner active:bg-slate-600'><Icon path={mdiQrcodeScan} size={1} /></button>
-								<button type="submit" className='bg-sky-500 text-white px-4 py-2 rounded-md border-[1px] border-sky-600 active:shadow-inner active:bg-sky-600'>Add account</button>
+								<button onClick={() => setMode(0)} className='bg-slate-200 px-4 py-2 rounded-md border-[1px] border-slate-300 active:shadow-inner active:bg-slate-600 dark:bg-slate-700 dark:border-slate-600'><Icon path={mdiQrcodeScan} size={1} /></button>
+								<button type="submit" className='bg-sky-500 dark:bg-sky-800 border-[1px] border-sky-600 dark:border-sky-700 text-white px-2 py-1 rounded-md active:shadow-inner active:bg-sky-600 dark:active:bg-sky-900 disabled:opacity-50 disabled:cursor-not-allowed'>Add account</button>
 							</div>
 						</form> }
 					</div>
