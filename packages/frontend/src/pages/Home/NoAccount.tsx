@@ -7,12 +7,12 @@ import { useTranslation } from 'react-i18next'
 function NoAccount(props: { addAccount: () => void, refreshList: () => void }) {
 	const { t } = useTranslation()
 
-	const [presentRecoverSyncingDialog, setPresentRecoverSyncingDialog] = useState(false)
+	const [presentRecoverSyncingDialog, setPresentRecoverSyncingDialog] = useState(true)
 	return (<>
 		<div className='flex flex-col gap-4'>
 			<div className="text-2xl font-bold">{t('HOME_EMPTYSCREEN_TITLE')}</div>
 
-			<div className='flex bg-white p-2 gap-4 rounded-md shadow-sm items-center' onClick={() => setPresentRecoverSyncingDialog(true)}>
+			<div className='flex bg-white dark:bg-slate-800 p-2 gap-4 rounded-md shadow-sm items-center' onClick={() => setPresentRecoverSyncingDialog(true)}>
 				<div>
 					<Icon path={mdiQrcodeScan} size={1.5} />
 				</div>
@@ -22,7 +22,7 @@ function NoAccount(props: { addAccount: () => void, refreshList: () => void }) {
 				</div>
 			</div>
 
-			<div className='flex bg-white p-2 gap-4 rounded-md shadow-sm items-center' onClick={props.addAccount}>
+			<div className='flex bg-white dark:bg-slate-800 p-2 gap-4 rounded-md shadow-sm items-center' onClick={props.addAccount}>
 				<div>
 				<Icon path={mdiAccountPlus} size={1.5} />
 				</div>

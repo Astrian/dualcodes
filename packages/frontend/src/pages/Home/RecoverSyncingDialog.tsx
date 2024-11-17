@@ -71,18 +71,18 @@ function RecoverSyncingDialog(props: {
 	return (<>
 		<div className='z-20 fixed top-0 left-0 w-full h-full bg-black/40'>
 			<div className='mx-3 lg:w-2/4 lg:mx-auto h-full flex justify-center items-center'>
-				<div className='w-full border-[1px] border-gray-300 rounded-md'>
-					<div className='bg-slate-300 rounded-t-md p-2 flex justify-between'>
+				<div className='w-full border-[1px] border-gray-300 dark:border-gray-600 rounded-md'>
+					<div className='bg-slate-300 dark:bg-slate-700 rounded-t-md p-2 flex justify-between'>
 						<div className='font-bold text-xl'>{t('HOME_RECOVERDIALOG_TITLE')}</div>
 						<button onClick={props.dismiss}><Icon path={mdiClose} size={1} /></button>
 					</div>
-					<div className='bg-white p-2 rounded-b-md flex lg:flex-row flex-col gap-4 items-center justify-center text-center'>
+					<div className='bg-white dark:bg-slate-800 p-2 rounded-b-md flex lg:flex-row flex-col gap-4 items-center justify-center text-center'>
 						<div className='max-w-60'>
 							<Scanner onScan={result => qrCodeEvent(result)} />
 						</div>
 						<div className='flex-1 flex flex-col gap-2'>
 							<div>{t('HOME_RECOVERDIALOG_GUIDE')}</div>
-							<textarea className='w-full h-24 p-2 bg-yellow-100 font-mono border-[1px] border-yellow-400 rounded-md resize-none outline-none' placeholder={t('HOME_RECOVERDIALOG_CODEPLACEHOLDER')} onChange={paste} />
+							<textarea className='w-full h-24 p-2 bg-yellow-100 font-mono border-[1px] border-yellow-400 text-black rounded-md resize-none outline-none' placeholder={t('HOME_RECOVERDIALOG_CODEPLACEHOLDER')} onChange={paste} />
 						</div>
 					</div>
 				</div>
