@@ -7,6 +7,8 @@
 ## What is DualCodes?
 DualCodes is a 2-factor authenticator app for people with advanced account security requirements. DualCodes can be fired up on any device with a modern browser, giving you complete control of your account security data.
 
+[Live Demo](https://dualcodes-demo.pages.dev/)
+
 ## Why DualCodes?
 - **Convenience.** No app required, just in your any devices with a modern browser.
 - **Secure.** Sync across multiple devices with the server or NAS you own with AES-GCM end-to-end encryption.
