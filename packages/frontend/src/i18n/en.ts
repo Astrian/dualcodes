@@ -70,6 +70,9 @@ const en = {
 		"HOME_COPYTIP": "Click the 2FA code to copy it",
 		"HOME_ACCOCARD_COPIED": "2FA code for “{{account}}” is copied",
 		"HOME_ACCOUNTCARD_NONAME": "No account name",
+		"PREFERENCE_ABOUT_TITLE": "About",
+		"PREFERENCE_ABOUT_VERCODE_TITLE": "Version",
+		"PREFERENCE_ABOUT_REPO_TITLE": "Open source repository",
 	}
 }
 

@@ -69,7 +69,10 @@ const en = {
 		"ACCOUNTDETAIL_DELOPS_SUCCESS": "帐户已删除",
 		"HOME_COPYTIP": "点击双因素验证代码以复制",
 		"HOME_ACCOCARD_COPIED": "已复制「{{account}}」的双因素验证代码",
-		"HOME_ACCOUNTCARD_NONAME": "无帐户名称"
+		"HOME_ACCOUNTCARD_NONAME": "无帐户名称",
+		"PREFERENCE_ABOUT_TITLE": "关于",
+		"PREFERENCE_ABOUT_VERSION": "版本",
+		"PREFERENCE_ABOUT_SOURCECODE": "源代码",
 	}
 }
 

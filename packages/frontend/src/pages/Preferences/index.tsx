@@ -10,6 +10,9 @@ import relativeTime from 'dayjs/plugin/relativeTime'
 import loadFromServer from "../../utils/loadFromServer"
 import syncToServer from "../../utils/syncToServer"
 import { useTranslation } from "react-i18next"
+import packageFile from "../../../package.json"
+import Icon from '@mdi/react'
+import { mdiGithub } from '@mdi/js'
 
 dayjs.extend(relativeTime)
 
@@ -195,6 +198,19 @@ function Preferences() {
 						<div className="text-red-500 dark:text-red-400">{t('PREFERENCE_OTHERS_ERASE_TITLE')}</div>
 						<div className="text-sm text-red-500/80 dark:text-red-400/70">{t('PREFERENCE_OTHERS_ERASE_DESC')}</div>
 					</button>
+				</PilledTableCell>
+			</PilledTable>
+
+			<PilledTable header={t('PREFERENCE_ABOUT_TITLE')}>
+				<PilledTableCell>
+					<div className="font-semibold">{t('PREFERENCE_ABOUT_VERCODE_TITLE')}</div>
+					<div>{packageFile.version}</div>
+				</PilledTableCell>
+				<PilledTableCell>
+					<div className="font-semibold">{t('PREFERENCE_ABOUT_REPO_TITLE')}</div>
+					<div><a href="https://github.com/Astrian/dualcodes">
+						<div className="flex text-sky-500 underline gap-1"><Icon path={mdiGithub} size={1} /> Astrian/dualcodes</div>
+					</a></div>
 				</PilledTableCell>
 			</PilledTable>
 		</section>
