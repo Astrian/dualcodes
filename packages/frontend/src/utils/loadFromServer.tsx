@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 async function loadFromServer() {
+	if (import.meta.env.VITE_DEMOMODE === "true") return
 	const syncConfigLS = localStorage.getItem('tfa_sync')
 	if (!syncConfigLS) return
 	const syncConfig = JSON.parse(syncConfigLS) as { password: string, id: string, key: {

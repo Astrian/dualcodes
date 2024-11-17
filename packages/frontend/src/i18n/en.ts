@@ -78,6 +78,8 @@ const en = {
 		"PREFERENCE_INITIALSYNCDIALOG_P2": "Enter the current server sync password to confirm enabling syncing feature.",
 		"PREFERENCE_INITIALSYNCDIALOG_ENABLEBTN": "Enable syncing",
 		"PREFERENCE_INITIALSYNCDIALOG_PASSWORDPLACEHOLDER": "Enter server sync password",
+		"HOME_EMPTYSCREEN_SYNC_NOTAVAILABLE_DESC": "Syncing feature is not available in demo mode.",
+		"PREFERENCE_SYNCING_FEATURESWITCH_NA": "Not available"
 	}
 }
 

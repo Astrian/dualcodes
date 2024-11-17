@@ -19,6 +19,10 @@ function App() {
 
 	async function reloadData() {
 		loadFromLocalStorage()
+		if (import.meta.env.VITE_DEMOMODE === "true") {
+			console.log('Demo mode enabled, syncing related functions are disabled.')
+			setLoading(false)
+		}
 		try {
 			await loadFromServer()
 		} catch (e) {

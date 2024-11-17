@@ -116,8 +116,8 @@ function Preferences() {
 				<PilledTableCell>
 					<div className="font-semibold">{t('PREFERENCE_SYNCING_FEATURESWITCH_TITLE')}</div>
 					<div className="flex items-center gap-3">
-						<Switch checked={syncing} onChange={toggleSyncing} />
-						<span>{ syncing ? t('PREFERENCE_SYNCING_FEATURESWITCH_ON') : t('PREFERENCE_SYNCING_FEATURESWITCH_OFF') }</span>
+						<Switch checked={syncing} onChange={toggleSyncing} disabled={import.meta.env.VITE_DEMOMODE === "true"} />
+						{import.meta.env.VITE_DEMOMODE === "true" ? t('PREFERENCE_SYNCING_FEATURESWITCH_NA') : <span>{ syncing ? t('PREFERENCE_SYNCING_FEATURESWITCH_ON') : t('PREFERENCE_SYNCING_FEATURESWITCH_OFF') }</span>}
 					</div>
 				</PilledTableCell>
 
