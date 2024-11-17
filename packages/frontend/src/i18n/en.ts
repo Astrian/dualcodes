@@ -73,6 +73,11 @@ const en = {
 		"PREFERENCE_ABOUT_TITLE": "About",
 		"PREFERENCE_ABOUT_VERCODE_TITLE": "Version",
 		"PREFERENCE_ABOUT_REPO_TITLE": "Open source repository",
+		"PREFERENCE_INITIALSYNCDIALOG_TITLE": "Enable syncing feature",
+		"PREFERENCE_INITIALSYNCDIALOG_P1": "Enabling syncing feature will create a new sync ID on the server, only data in devices with the same ID can be synced. If you want to sync with existing devices, please use the connect to existing device feature.",
+		"PREFERENCE_INITIALSYNCDIALOG_P2": "Enter the current server sync password to confirm enabling syncing feature.",
+		"PREFERENCE_INITIALSYNCDIALOG_ENABLEBTN": "Enable syncing",
+		"PREFERENCE_INITIALSYNCDIALOG_PASSWORDPLACEHOLDER": "Enter server sync password",
 	}
 }
 

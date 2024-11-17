@@ -73,6 +73,11 @@ const en = {
 		"PREFERENCE_ABOUT_TITLE": "关于",
 		"PREFERENCE_ABOUT_VERSION": "版本",
 		"PREFERENCE_ABOUT_SOURCECODE": "源代码",
+		"PREFERENCE_INITIALSYNCDIALOG_TITLE": "启用同步功能",
+		"PREFERENCE_INITIALSYNCDIALOG_P1": "在此启用同步功能后将会在服务器上创建一个全新的同步 ID，只有同 ID 下的设备中的数据可被同步。若需与已有设备同步，请使用连接已有设备功能。",
+		"PREFERENCE_INITIALSYNCDIALOG_P2": "输入当前服务器的同步密码以确认启用同步功能。",
+		"PREFERENCE_INITIALSYNCDIALOG_ENABLEBTN": "启用同步",
+		"PREFERENCE_INITIALSYNCDIALOG_PASSWORDPLACEHOLDER": "输入服务器同步密码",
 	}
 }
 

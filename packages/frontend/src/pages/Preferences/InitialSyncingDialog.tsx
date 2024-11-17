@@ -3,8 +3,10 @@ import { mdiClose } from '@mdi/js'
 import { useState } from 'react'
 import axios from 'axios'
 import {v4 as uuidv4} from 'uuid'
+import { useTranslation } from 'react-i18next'
 
 function InitialSyncingDialog(props: { dismiss: () => void, launchSyncing: () => void }) {
+	const { t } = useTranslation()
 	const [password, setPassword] = useState('')
 
 	async function exec() {
@@ -94,19 +96,19 @@ function InitialSyncingDialog(props: { dismiss: () => void, launchSyncing: () =>
 	return (<>
 		<div className='z-20 fixed top-0 left-0 w-full h-full bg-black/40'>
 			<div className='mx-3 lg:w-2/4 lg:mx-auto h-full flex justify-center items-center'>
-				<div className='w-full border-[1px] border-gray-300 rounded-md'>
-					<div className='bg-slate-300 rounded-t-md p-2 flex justify-between'>
-						<div className='font-bold text-xl'>Enable syncing</div>
+				<div className='w-full border-[1px] border-gray-300 dark:border-gray-600 rounded-md'>
+					<div className='bg-slate-300 dark:bg-slate-700 rounded-t-md p-2 flex justify-between'>
+						<div className='font-bold text-xl'>{t('PREFERENCE_INITIALSYNCDIALOG_TITLE')}</div>
 					<button onClick={props.dismiss}><Icon path={mdiClose} size={1} /></button>
 					</div>
-					<div className='bg-white p-2 rounded-b-md flex flex-col gap-2'>
+					<div className='bg-white dark:bg-slate-800 p-2 rounded-b-md flex flex-col gap-2'>
 						<div className='flex flex-col gap-2'>
-							<p>Please note that the data on the server will be replaced with the data in your current browser when you enable syncing feature. If you want to recover data from your existing server, try use connect feature instead of this switch.</p>
-							<p>Input the server syning password to enable syncing feature.</p>
+							<p>{t('PREFERENCE_INITIALSYNCDIALOG_P1')}</p>
+							<p>{t('PREFERENCE_INITIALSYNCDIALOG_P2')}</p>
 						</div>
-						<input placeholder="Password" className='outline-none flex-1 shadow-inner border-[1px] border-slate-200 px-2 py-1 rounded-md' required type="password" onChange={e => setPassword(e.target.value)} />
+						<input placeholder={t('PREFERENCE_INITIALSYNCDIALOG_PASSWORDPLACEHOLDER')} className='outline-none flex-1 shadow-inner border-[1px] border-slate-200 dark:border-slate-700 dark:bg-slate-800 px-2 py-1 rounded-md' required type="password" onChange={e => setPassword(e.target.value)} />
 						<div className='flex flex-row-reverse'>
-							<button className='bg-sky-500 border-[1px] border-sky-600 text-white px-2 py-1 rounded-md active:shadow-inner active:bg-sky-600 disabled:bg-sky-300 disabled:cursor-not-allowed disabled:border-sky-400' disabled={password === ""} onClick={exec}>Enable syncing</button>
+							<button className='bg-sky-500 dark:bg-sky-800 border-[1px] border-sky-600 dark:border-sky-700 text-white px-2 py-1 rounded-md active:shadow-inner active:bg-sky-600 dark:active:bg-sky-900 disabled:opacity-50 disabled:cursor-not-allowed' disabled={password === ""} onClick={exec}>{t('PREFERENCE_INITIALSYNCDIALOG_ENABLEBTN')}</button>
 						</div>
 					</div>
 				</div>
